@@ -33,11 +33,11 @@ export default function Testimonials() {
   return (
     <section className="relative py-20 md:py-32 bg-[#0A0A0A] text-white overflow-hidden">
       <div className="absolute inset-0 grain-overlay opacity-15" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C8A97E]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33A1E0]/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Testimonials</span>
+          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Testimonials</span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4"
             style={{ fontFamily: 'var(--font-display)' }}
@@ -48,7 +48,7 @@ export default function Testimonials() {
 
         <div className="relative max-w-3xl mx-auto">
           {/* Quote icon */}
-          <Quote size={48} className="text-[#C8A97E]/10 absolute -top-4 left-0 md:-left-8" />
+          <Quote size={48} className="text-[#33A1E0]/10 absolute -top-4 left-0 md:-left-8" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -64,7 +64,7 @@ export default function Testimonials() {
                   <Star
                     key={i}
                     size={14}
-                    className={i < t.rating ? 'text-[#C8A97E] fill-[#C8A97E]' : 'text-white/20'}
+                    className={i < t.rating ? 'text-[#33A1E0] fill-[#33A1E0]' : 'text-white/20'}
                   />
                 ))}
               </div>
@@ -77,7 +77,7 @@ export default function Testimonials() {
               </p>
 
               <div className="flex flex-col items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#C8A97E]/30">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#33A1E0]/30">
                   <Image
                     src={t.avatar}
                     alt={t.name}
@@ -113,7 +113,7 @@ export default function Testimonials() {
                     start();
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === current ? 'bg-[#C8A97E] w-6' : 'bg-white/20 hover:bg-white/40'
+                    i === current ? 'bg-[#33A1E0] w-6' : 'bg-white/20 hover:bg-white/40'
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />

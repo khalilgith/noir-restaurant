@@ -72,7 +72,7 @@ function CalendarWidget({ selected, onChange }: { selected: Date | null; onChang
               onClick={() => onChange(new Date(year, month, day))}
               className={`w-full aspect-square rounded-full text-xs flex items-center justify-center transition-all duration-200 ${
                 isSelected
-                  ? 'bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] text-white'
+                  ? 'bg-gradient-to-br from-[#33A1E0] to-[#154D71] text-white'
                   : past
                   ? 'text-white/10 cursor-not-allowed'
                   : 'text-white/60 hover:bg-white/10 hover:text-white'
@@ -127,7 +127,7 @@ export default function ReservationPage() {
           animate={{ opacity: 1, scale: 1 }}
           className="text-center max-w-md px-5"
         >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center mx-auto mb-6">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center mx-auto mb-6">
             <Check size={28} className="text-white" />
           </div>
           <h2 className="text-3xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)' }}>
@@ -152,7 +152,7 @@ export default function ReservationPage() {
     <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen">
       {/* Header */}
       <section className="relative pb-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] text-gradient-gold" style={{ fontFamily: 'var(--font-display)' }}>
@@ -169,16 +169,16 @@ export default function ReservationPage() {
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16 mb-8">
         <div className="w-full h-[2px] bg-[var(--glass-light)] rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#C8A97E] to-[#A68B5B]"
+            className="h-full bg-gradient-to-r from-[#33A1E0] to-[#154D71]"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.4 }}
           />
         </div>
         <div className="flex justify-between mt-2 text-[10px] text-[var(--foreground)]/30 uppercase tracking-wider">
-          <span className={step >= 1 ? 'text-[#C8A97E]' : ''}>Date & Time</span>
-          <span className={step >= 2 ? 'text-[#C8A97E]' : ''}>Details</span>
-          <span className={step >= 3 ? 'text-[#C8A97E]' : ''}>Confirm</span>
+          <span className={step >= 1 ? 'text-[#33A1E0]' : ''}>Date & Time</span>
+          <span className={step >= 2 ? 'text-[#33A1E0]' : ''}>Details</span>
+          <span className={step >= 3 ? 'text-[#33A1E0]' : ''}>Confirm</span>
         </div>
       </div>
 
@@ -202,7 +202,7 @@ export default function ReservationPage() {
                             onClick={() => update('time', t)}
                             className={`py-2 text-xs rounded-lg border transition-all ${
                               form.time === t
-                                ? 'border-[#C8A97E] bg-[#C8A97E]/10 text-[#C8A97E]'
+                                ? 'border-[#33A1E0] bg-[#33A1E0]/10 text-[#33A1E0]'
                                 : 'border-white/10 text-white/50 hover:border-white/20'
                             }`}
                           >

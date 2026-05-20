@@ -47,7 +47,7 @@ export default function MenuPageComponent() {
     <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen">
       {/* Header */}
       <section className="relative pb-8 md:pb-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] text-gradient-gold" style={{ fontFamily: 'var(--font-display)' }}>
@@ -71,7 +71,7 @@ export default function MenuPageComponent() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search menu..."
-                className="w-full bg-transparent border border-[var(--glass-light)] rounded-full pl-10 pr-4 py-2 text-xs text-[var(--foreground)] placeholder:text-[var(--foreground)]/30 focus:outline-none focus:border-[#C8A97E]/50 transition-colors"
+                className="w-full bg-transparent border border-[var(--glass-light)] rounded-full pl-10 pr-4 py-2 text-xs text-[var(--foreground)] placeholder:text-[var(--foreground)]/30 focus:outline-none focus:border-[#33A1E0]/50 transition-colors"
               />
             </div>
 
@@ -84,7 +84,7 @@ export default function MenuPageComponent() {
                   onClick={() => setSortBy(s)}
                   className={`px-3 py-1.5 rounded-full border transition-all ${
                     sortBy === s
-                      ? 'border-[#C8A97E] text-[#C8A97E] bg-[#C8A97E]/10'
+                      ? 'border-[#33A1E0] text-[#33A1E0] bg-[#33A1E0]/10'
                       : 'border-[var(--glass-light)] text-[var(--foreground)]/40 hover:text-[var(--foreground)]/70'
                   }`}
                 >
@@ -109,7 +109,7 @@ export default function MenuPageComponent() {
                 {activeCat === cat && (
                   <motion.div
                     layoutId="menu-page-tab"
-                    className="absolute inset-0 bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] rounded-full"
+                    className="absolute inset-0 bg-gradient-to-r from-[#33A1E0] to-[#154D71] rounded-full"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -158,7 +158,7 @@ export default function MenuPageComponent() {
                   >
                     <div
                       onClick={() => setSelectedItem(dish)}
-                      className="group relative rounded-xl overflow-hidden bg-[var(--background)] border border-[var(--glass-light)] cursor-pointer hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-[#C8A97E]/30 transition-all duration-300 h-full"
+                      className="group relative rounded-xl overflow-hidden bg-[var(--background)] border border-[var(--glass-light)] cursor-pointer hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-[#33A1E0]/30 transition-all duration-300 h-full"
                     >
                       {/* Image */}
                       <div className="relative h-52 overflow-hidden">
@@ -171,12 +171,12 @@ export default function MenuPageComponent() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                         {dish.featured && (
-                          <span className="absolute top-3 left-3 px-3 py-1 text-[9px] tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full">
+                          <span className="absolute top-3 left-3 px-3 py-1 text-[9px] tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full">
                             Chef&apos;s Pick
                           </span>
                         )}
                         <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full">
-                          <Star size={10} className="text-[#C8A97E] fill-[#C8A97E]" />
+                          <Star size={10} className="text-[#33A1E0] fill-[#33A1E0]" />
                           <span className="text-white text-[10px]">{dish.rating}</span>
                         </div>
                       </div>
@@ -185,7 +185,7 @@ export default function MenuPageComponent() {
                       <div className="p-5">
                         <div className="flex items-start justify-between gap-2 mb-1.5">
                           <h3 className="text-sm font-medium">{dish.name}</h3>
-                          <span className="text-sm font-semibold text-[#C8A97E] shrink-0">{formatPrice(dish.price)}</span>
+                          <span className="text-sm font-semibold text-[#33A1E0] shrink-0">{formatPrice(dish.price)}</span>
                         </div>
                         <p className="text-xs text-[var(--foreground)]/40 line-clamp-2 leading-relaxed mb-3">
                           {dish.description}
@@ -196,7 +196,7 @@ export default function MenuPageComponent() {
                             {dish.prepTime}
                           </div>
                           {dish.tags.slice(0, 2).map((tag) => (
-                            <span key={tag} className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C8A97E]/10 text-[#C8A97E]">
+                            <span key={tag} className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#33A1E0]/10 text-[#33A1E0]">
                               {tag}
                             </span>
                           ))}
@@ -240,12 +240,12 @@ export default function MenuPageComponent() {
               <div className="p-6 space-y-4">
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-medium">{selectedItem.name}</h3>
-                  <span className="text-xl font-semibold text-[#C8A97E]">{formatPrice(selectedItem.price)}</span>
+                  <span className="text-xl font-semibold text-[#33A1E0]">{formatPrice(selectedItem.price)}</span>
                 </div>
                 <p className="text-sm text-[var(--foreground)]/50 leading-relaxed">{selectedItem.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedItem.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-[#C8A97E]/10 text-[#C8A97E] uppercase tracking-wider">
+                    <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-[#33A1E0]/10 text-[#33A1E0] uppercase tracking-wider">
                       {tag}
                     </span>
                   ))}
@@ -254,7 +254,7 @@ export default function MenuPageComponent() {
                   <div>
                     <span className="text-[10px] uppercase tracking-wider text-[var(--foreground)]/30">Rating</span>
                     <div className="flex items-center gap-1 mt-1">
-                      <Star size={14} className="text-[#C8A97E] fill-[#C8A97E]" />
+                      <Star size={14} className="text-[#33A1E0] fill-[#33A1E0]" />
                       <span className="text-sm">{selectedItem.rating}</span>
                     </div>
                   </div>

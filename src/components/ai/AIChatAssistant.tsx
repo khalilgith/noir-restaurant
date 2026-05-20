@@ -115,7 +115,7 @@ export default function AIChatAssistant() {
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] text-white shadow-[0_4px_20px_rgba(200,169,126,0.4)] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] text-white shadow-[0_4px_20px_rgba(51,161,224,0.4)] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         aria-label="Open AI Chef Assistant"
       >
         <Sparkles size={22} />
@@ -134,7 +134,7 @@ export default function AIChatAssistant() {
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center">
                   <Sparkles size={14} className="text-white" />
                 </div>
                 <div>
@@ -163,7 +163,7 @@ export default function AIChatAssistant() {
                   <div
                     className={`max-w-[85%] px-4 py-3 rounded-2xl text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-[#C8A97E] text-white rounded-br-md'
+                        ? 'bg-[#33A1E0] text-white rounded-br-md'
                         : 'bg-white/5 text-white/80 rounded-bl-md'
                     }`}
                   >
@@ -181,7 +181,7 @@ export default function AIChatAssistant() {
                           key={i}
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ repeat: Infinity, duration: 1, delay: i * 0.2 }}
-                          className="w-1.5 h-1.5 rounded-full bg-[#C8A97E]"
+                          className="w-1.5 h-1.5 rounded-full bg-[#33A1E0]"
                         />
                       ))}
                     </div>
@@ -198,7 +198,7 @@ export default function AIChatAssistant() {
                   <button
                     key={s}
                     onClick={() => sendMessage(s)}
-                    className="text-[10px] text-[#C8A97E] border border-[#C8A97E]/20 rounded-full px-3 py-1.5 hover:bg-[#C8A97E]/10 transition-colors"
+                    className="text-[10px] text-[#33A1E0] border border-[#33A1E0]/20 rounded-full px-3 py-1.5 hover:bg-[#33A1E0]/10 transition-colors"
                   >
                     {s}
                   </button>
@@ -213,12 +213,12 @@ export default function AIChatAssistant() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask anything about dining..."
-                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#C8A97E]/50"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#33A1E0]/50"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="w-9 h-9 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center text-white disabled:opacity-30 transition-opacity shrink-0"
+                  className="w-9 h-9 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center text-white disabled:opacity-30 transition-opacity shrink-0"
                 >
                   <Send size={14} />
                 </button>

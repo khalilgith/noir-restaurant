@@ -25,12 +25,12 @@ export default function Newsletter() {
   return (
     <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#C8A97E]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#33A1E0]/5 rounded-full blur-[120px] pointer-events-none" />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <AnimatedSection className="max-w-xl mx-auto text-center">
-          <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Stay Connected</span>
+          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Stay Connected</span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1] mt-4 mb-4"
             style={{ fontFamily: 'var(--font-display)' }}

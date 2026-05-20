@@ -20,7 +20,7 @@ export default function ContactPage() {
     <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen">
       {/* Header */}
       <section className="relative pb-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] text-gradient-gold" style={{ fontFamily: 'var(--font-display)' }}>
@@ -40,8 +40,8 @@ export default function ContactPage() {
             {/* Address */}
             <AnimatedSection>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#C8A97E]/10 flex items-center justify-center shrink-0">
-                  <MapPin size={16} className="text-[#C8A97E]" />
+                <div className="w-10 h-10 rounded-full bg-[#33A1E0]/10 flex items-center justify-center shrink-0">
+                  <MapPin size={16} className="text-[#33A1E0]" />
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1">Address</h3>
@@ -56,12 +56,12 @@ export default function ContactPage() {
             {/* Phone */}
             <AnimatedSection delay={0.1}>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#C8A97E]/10 flex items-center justify-center shrink-0">
-                  <Phone size={16} className="text-[#C8A97E]" />
+                <div className="w-10 h-10 rounded-full bg-[#33A1E0]/10 flex items-center justify-center shrink-0">
+                  <Phone size={16} className="text-[#33A1E0]" />
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1">Phone</h3>
-                  <a href="tel:+33142681234" className="text-sm text-[var(--foreground)]/40 hover:text-[#C8A97E] transition-colors">
+                  <a href="tel:+33142681234" className="text-sm text-[var(--foreground)]/40 hover:text-[#33A1E0] transition-colors">
                     +33 1 42 68 12 34
                   </a>
                 </div>
@@ -71,12 +71,12 @@ export default function ContactPage() {
             {/* Email */}
             <AnimatedSection delay={0.2}>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#C8A97E]/10 flex items-center justify-center shrink-0">
-                  <Mail size={16} className="text-[#C8A97E]" />
+                <div className="w-10 h-10 rounded-full bg-[#33A1E0]/10 flex items-center justify-center shrink-0">
+                  <Mail size={16} className="text-[#33A1E0]" />
                 </div>
                 <div>
                   <h3 className="text-sm font-medium mb-1">Email</h3>
-                  <a href="mailto:reservations@noir.com" className="text-sm text-[var(--foreground)]/40 hover:text-[#C8A97E] transition-colors">
+                  <a href="mailto:reservations@noir.com" className="text-sm text-[var(--foreground)]/40 hover:text-[#33A1E0] transition-colors">
                     reservations@noir.com
                   </a>
                 </div>
@@ -86,8 +86,8 @@ export default function ContactPage() {
             {/* Hours */}
             <AnimatedSection delay={0.3}>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#C8A97E]/10 flex items-center justify-center shrink-0">
-                  <Clock size={16} className="text-[#C8A97E]" />
+                <div className="w-10 h-10 rounded-full bg-[#33A1E0]/10 flex items-center justify-center shrink-0">
+                  <Clock size={16} className="text-[#33A1E0]" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-sm font-medium mb-3">Opening Hours</h3>
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-col items-center justify-center h-full py-20 text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center mx-auto mb-6">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg>
                 </div>
                 <h3 className="text-xl font-medium mb-2">Message Sent</h3>

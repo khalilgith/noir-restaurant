@@ -23,7 +23,7 @@ export default function ReservationCTA() {
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="max-w-2xl mx-auto text-center">
           <AnimatedSection>
-            <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Experience</span>
+            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Experience</span>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] text-white font-medium leading-[1] mt-4 mb-6"
               style={{ fontFamily: 'var(--font-display)' }}
@@ -45,8 +45,8 @@ export default function ReservationCTA() {
                 { icon: Users, label: '2 – 20 Guests' },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-full border border-[#C8A97E]/30 flex items-center justify-center">
-                    <Icon size={18} className="text-[#C8A97E]" />
+                  <div className="w-12 h-12 rounded-full border border-[#33A1E0]/30 flex items-center justify-center">
+                    <Icon size={18} className="text-[#33A1E0]" />
                   </div>
                   <span className="text-[10px] text-white/40 tracking-wider uppercase">{label}</span>
                 </div>
@@ -59,7 +59,7 @@ export default function ReservationCTA() {
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-10 py-4 text-sm tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full shadow-[0_4px_20px_rgba(200,169,126,0.35)] hover:shadow-[0_8px_30px_rgba(200,169,126,0.45)] transition-shadow duration-300"
+                className="inline-flex items-center px-10 py-4 text-sm tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full shadow-[0_4px_20px_rgba(51,161,224,0.35)] hover:shadow-[0_8px_30px_rgba(51,161,224,0.45)] transition-shadow duration-300"
               >
                 Make a Reservation
               </motion.span>

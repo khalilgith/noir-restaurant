@@ -76,7 +76,7 @@ export default function AdminDashboard() {
       {/* Top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 flex items-center px-5 md:px-10">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center text-white text-[10px] font-bold tracking-wider">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center text-white text-[10px] font-bold tracking-wider">
             N
           </div>
           <span className="text-sm tracking-[0.2em] uppercase font-light">Noir</span>
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
                 onClick={() => setActiveNav(item.id)}
                 className={`flex items-center gap-2 px-4 py-2 text-xs rounded-full whitespace-nowrap ${
                   activeNav === item.id
-                    ? 'bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white'
+                    ? 'bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white'
                     : 'border border-white/10 text-white/50'
                 }`}
               >
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-xs text-white/30 tracking-wider uppercase">{stat.label}</span>
                       <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
-                        <stat.icon size={14} className="text-[#C8A97E]" />
+                        <stat.icon size={14} className="text-[#33A1E0]" />
                       </div>
                     </div>
                     <div className="text-2xl font-semibold">{stat.value}</div>
@@ -180,7 +180,7 @@ export default function AdminDashboard() {
                       <div className="flex items-center gap-1 text-xs text-amber-400">
                         <Star size={12} fill="currentColor" /> {dish.rating}
                       </div>
-                      <div className="text-sm text-[#C8A97E]">{formatPrice(dish.price)}</div>
+                      <div className="text-sm text-[#33A1E0]">{formatPrice(dish.price)}</div>
                     </div>
                   ))}
                 </div>
@@ -196,7 +196,7 @@ export default function AdminDashboard() {
                   <h1 className="text-2xl font-medium">Menu Items</h1>
                   <p className="text-sm text-white/30 mt-1">Manage your restaurant&apos;s menu.</p>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 text-xs tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full hover:from-[#A68B5B] hover:to-[#8B7249] transition-all">
+                <button className="flex items-center gap-2 px-4 py-2 text-xs tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full hover:from-[#154D71] hover:to-[#1C6EA4] transition-all">
                   <Plus size={14} /> Add Dish
                 </button>
               </div>
@@ -208,7 +208,7 @@ export default function AdminDashboard() {
                   value={menuSearch}
                   onChange={(e) => setMenuSearch(e.target.value)}
                   placeholder="Search menu..."
-                  className="w-full bg-transparent border border-white/10 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#C8A97E]/50 transition-colors"
+                  className="w-full bg-transparent border border-white/10 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#33A1E0]/50 transition-colors"
                 />
               </div>
 
@@ -243,7 +243,7 @@ export default function AdminDashboard() {
                             {dish.category}
                           </span>
                         </td>
-                        <td className="py-3 pr-4 text-[#C8A97E]">{formatPrice(dish.price)}</td>
+                        <td className="py-3 pr-4 text-[#33A1E0]">{formatPrice(dish.price)}</td>
                         <td className="py-3 pr-4">
                           <div className="flex items-center gap-1 text-xs">
                             <Star size={12} className="text-amber-400" fill="currentColor" /> {dish.rating}
@@ -356,7 +356,7 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 rounded-xl border border-white/5">
                   <h3 className="text-sm font-medium mb-4 flex items-center gap-2">
-                    <TrendingUp size={16} className="text-[#C8A97E]" />
+                    <TrendingUp size={16} className="text-[#33A1E0]" />
                     Revenue Trend
                   </h3>
                   <div className="flex items-end gap-2 h-32">
@@ -366,7 +366,7 @@ export default function AdminDashboard() {
                           initial={{ height: 0 }}
                           animate={{ height: `${h}%` }}
                           transition={{ duration: 0.6, delay: i * 0.05 }}
-                          className="w-full bg-gradient-to-t from-[#C8A97E]/50 to-[#C8A97E]/20 rounded-t"
+                          className="w-full bg-gradient-to-t from-[#33A1E0]/50 to-[#33A1E0]/20 rounded-t"
                         />
                       </div>
                     ))}
@@ -378,7 +378,7 @@ export default function AdminDashboard() {
 
                 <div className="p-6 rounded-xl border border-white/5">
                   <h3 className="text-sm font-medium mb-4 flex items-center gap-2">
-                    <Clock size={16} className="text-[#C8A97E]" />
+                    <Clock size={16} className="text-[#33A1E0]" />
                     Peak Hours
                   </h3>
                   <div className="flex items-end gap-2 h-32">
@@ -388,7 +388,7 @@ export default function AdminDashboard() {
                           initial={{ height: 0 }}
                           animate={{ height: `${h}%` }}
                           transition={{ duration: 0.6, delay: i * 0.05 }}
-                          className="w-full bg-gradient-to-t from-[#A68B5B]/50 to-[#A68B5B]/20 rounded-t"
+                          className="w-full bg-gradient-to-t from-[#154D71]/50 to-[#154D71]/20 rounded-t"
                         />
                       </div>
                     ))}
@@ -405,7 +405,7 @@ export default function AdminDashboard() {
                 <div className="space-y-3">
                   {[...menuItems].sort((a, b) => b.rating - a.rating).slice(0, 5).map((dish, i) => (
                     <div key={dish.id} className="flex items-center gap-4 p-3 rounded-xl border border-white/5">
-                      <span className="text-lg font-bold text-[#C8A97E] w-8">{i + 1}</span>
+                      <span className="text-lg font-bold text-[#33A1E0] w-8">{i + 1}</span>
                       <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
                         <Image src={dish.image} alt={dish.name} fill className="object-cover" sizes="40px" />
                       </div>

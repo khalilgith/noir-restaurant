@@ -16,11 +16,11 @@ export default function MenuPreview() {
 
   return (
     <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#C8A97E]/4 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#33A1E0]/4 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <AnimatedSection className="text-center mb-12">
-          <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Explore</span>
+          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Explore</span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4 mb-6"
             style={{ fontFamily: 'var(--font-display)' }}
@@ -44,7 +44,7 @@ export default function MenuPreview() {
               {active === cat && (
                 <motion.div
                   layoutId="menu-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] rounded-full"
+                  className="absolute inset-0 bg-gradient-to-r from-[#33A1E0] to-[#154D71] rounded-full"
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
@@ -69,7 +69,7 @@ export default function MenuPreview() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group flex gap-4 p-4 rounded-xl border border-[var(--glass-light)] hover:border-[#C8A97E]/30 transition-all duration-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+                className="group flex gap-4 p-4 rounded-xl border border-[var(--glass-light)] hover:border-[#33A1E0]/30 transition-all duration-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
               >
                 <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                   <Image
@@ -83,7 +83,7 @@ export default function MenuPreview() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
                     <h4 className="text-sm font-medium truncate">{dish.name}</h4>
-                    <span className="text-sm font-semibold text-[#C8A97E] shrink-0">
+                    <span className="text-sm font-semibold text-[#33A1E0] shrink-0">
                       {formatPrice(dish.price)}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function MenuPreview() {
                     {dish.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C8A97E]/10 text-[#C8A97E]"
+                        className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#33A1E0]/10 text-[#33A1E0]"
                       >
                         {tag}
                       </span>

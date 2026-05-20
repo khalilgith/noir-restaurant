@@ -57,7 +57,7 @@ export default function Navbar() {
         <nav className="max-w-[1440px] mx-auto flex items-center justify-between h-16 md:h-[72px] px-5 md:px-10 lg:px-16">
           {/* Logo */}
           <Link href="/" className="relative z-10 flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C8A97E] to-[#A68B5B] flex items-center justify-center text-white text-xs font-bold tracking-wider">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center text-white text-xs font-bold tracking-wider">
               N
             </div>
             <span className="text-white text-lg tracking-[0.2em] uppercase font-light">
@@ -76,7 +76,7 @@ export default function Navbar() {
                   className={cn(
                     'relative px-4 py-2 text-xs tracking-wider uppercase transition-colors duration-300',
                     active
-                      ? 'text-[#C8A97E]'
+                      ? 'text-[#33A1E0]'
                       : 'text-white/70 hover:text-white'
                   )}
                 >
@@ -84,7 +84,7 @@ export default function Navbar() {
                   {active && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute bottom-0 left-4 right-4 h-[1px] bg-[#C8A97E]"
+                      className="absolute bottom-0 left-4 right-4 h-[1px] bg-[#33A1E0]"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -105,7 +105,7 @@ export default function Navbar() {
 
             <Link
               href="/reservation"
-              className="hidden md:flex items-center px-5 py-2 text-xs tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full hover:from-[#A68B5B] hover:to-[#8B7249] transition-all duration-300"
+              className="hidden md:flex items-center px-5 py-2 text-xs tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full hover:from-[#154D71] hover:to-[#1C6EA4] transition-all duration-300"
             >
               Reserve
             </Link>
@@ -158,7 +158,7 @@ export default function Navbar() {
                       onClick={() => setMobileOpen(false)}
                       className={cn(
                         'text-2xl tracking-[0.15em] uppercase transition-colors',
-                        active ? 'text-[#C8A97E]' : 'text-white/70 hover:text-white'
+                        active ? 'text-[#33A1E0]' : 'text-white/70 hover:text-white'
                       )}
                     >
                       {link.label}
@@ -177,7 +177,7 @@ export default function Navbar() {
                 <Link
                   href="/reservation"
                   onClick={() => setMobileOpen(false)}
-                  className="px-8 py-3 text-sm tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full"
+                  className="px-8 py-3 text-sm tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full"
                 >
                   Reserve a Table
                 </Link>

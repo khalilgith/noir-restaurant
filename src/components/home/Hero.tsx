@@ -32,7 +32,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C8A97E]/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33A1E0]/8 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Content */}
       <motion.div style={{ opacity }} className="relative z-10 text-center px-5 max-w-4xl mx-auto">
@@ -41,10 +41,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="inline-flex items-center gap-3 text-[#C8A97E] text-xs tracking-[0.3em] uppercase mb-8">
-            <span className="w-8 h-[1px] bg-[#C8A97E]" />
+          <span className="inline-flex items-center gap-3 text-[#33A1E0] text-xs tracking-[0.3em] uppercase mb-8">
+            <span className="w-8 h-[1px] bg-[#33A1E0]" />
             Est. 2019 &middot; Paris
-            <span className="w-8 h-[1px] bg-[#C8A97E]" />
+            <span className="w-8 h-[1px] bg-[#33A1E0]" />
           </span>
         </motion.div>
 
@@ -79,7 +79,7 @@ export default function Hero() {
         >
           <Link
             href="/reservation"
-            className="px-8 py-3.5 text-sm tracking-wider uppercase bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white rounded-full hover:from-[#A68B5B] hover:to-[#8B7249] transition-all duration-300 shadow-[0_4px_20px_rgba(200,169,126,0.3)]"
+            className="px-8 py-3.5 text-sm tracking-wider uppercase bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white rounded-full hover:from-[#154D71] hover:to-[#1C6EA4] transition-all duration-300 shadow-[0_4px_20px_rgba(51,161,224,0.3)]"
           >
             Reserve Your Table
           </Link>

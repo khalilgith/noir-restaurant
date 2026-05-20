@@ -22,7 +22,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost:
     'bg-transparent text-[#0000EE] hover:opacity-80 active:text-[#0055FF] disabled:text-[#999]',
   gold:
-    'bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white hover:from-[#A68B5B] hover:to-[#8B7249] active:from-[#8B7249] active:to-[#6E5A3A]',
+    'bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white hover:from-[#154D71] hover:to-[#1C6EA4] active:from-[#1C6EA4] active:to-[#1C6EA4]',
   icon:
     'bg-white/10 text-current hover:bg-white/20 active:bg-white/30 disabled:bg-white/5 disabled:opacity-50 rounded-full',
 };

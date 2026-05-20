@@ -13,7 +13,7 @@ export default function GalleryPreview() {
     <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Visual Journey</span>
+          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Visual Journey</span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4"
             style={{ fontFamily: 'var(--font-display)' }}
@@ -55,7 +55,7 @@ export default function GalleryPreview() {
         <AnimatedSection delay={0.4} className="text-center mt-12">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-sm text-[#C8A97E] hover:text-[#A68B5B] transition-colors tracking-wider uppercase"
+            className="inline-flex items-center gap-2 text-sm text-[#33A1E0] hover:text-[#154D71] transition-colors tracking-wider uppercase"
           >
             View Full Gallery &rarr;
           </Link>

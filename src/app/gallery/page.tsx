@@ -28,7 +28,7 @@ export default function GalleryPage() {
     <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen">
       {/* Header */}
       <section className="relative pb-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] text-gradient-gold" style={{ fontFamily: 'var(--font-display)' }}>
@@ -50,7 +50,7 @@ export default function GalleryPage() {
               onClick={() => setActive(cat)}
               className={`px-5 py-2 text-xs tracking-wider uppercase rounded-full transition-all ${
                 active === cat
-                  ? 'bg-gradient-to-r from-[#C8A97E] to-[#A68B5B] text-white'
+                  ? 'bg-gradient-to-r from-[#33A1E0] to-[#154D71] text-white'
                   : 'border border-[var(--glass-light)] text-[var(--foreground)]/50 hover:text-[var(--foreground)]/80'
               }`}
             >

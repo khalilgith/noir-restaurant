@@ -14,11 +14,11 @@ export default function FeaturedDishes() {
   return (
     <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
       {/* Subtle ambient */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C8A97E]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#33A1E0]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Curated Selection</span>
+          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Curated Selection</span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4 mb-6"
             style={{ fontFamily: 'var(--font-display)' }}
@@ -49,12 +49,12 @@ export default function FeaturedDishes() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   {dish.tags[0] && (
-                    <span className="absolute top-3 left-3 px-3 py-1 text-[10px] tracking-wider uppercase bg-[#C8A97E] text-white rounded-full">
+                    <span className="absolute top-3 left-3 px-3 py-1 text-[10px] tracking-wider uppercase bg-[#33A1E0] text-white rounded-full">
                       {dish.tags[0]}
                     </span>
                   )}
                   <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Star size={10} className="text-[#C8A97E] fill-[#C8A97E]" />
+                    <Star size={10} className="text-[#33A1E0] fill-[#33A1E0]" />
                     <span className="text-white text-[10px]">{dish.rating}</span>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ export default function FeaturedDishes() {
                     {dish.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-semibold text-[#C8A97E]">
+                    <span className="text-lg font-semibold text-[#33A1E0]">
                       {formatPrice(dish.price)}
                     </span>
                     <span className="text-[10px] text-[var(--foreground)]/30 tracking-wide uppercase">
@@ -82,7 +82,7 @@ export default function FeaturedDishes() {
         <AnimatedSection delay={0.4} className="text-center mt-12">
           <Link
             href="/menu"
-            className="inline-flex items-center gap-2 text-sm text-[#C8A97E] hover:text-[#A68B5B] transition-colors tracking-wider uppercase group"
+            className="inline-flex items-center gap-2 text-sm text-[#33A1E0] hover:text-[#154D71] transition-colors tracking-wider uppercase group"
           >
             View Full Menu
             <motion.span

@@ -39,10 +39,10 @@ export default function AboutPage() {
     <main className="pt-24 md:pt-28 bg-[#0A0A0A] text-white min-h-screen">
       {/* Hero */}
       <section className="relative pb-12 md:pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">About NOIR</span>
+            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">About NOIR</span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] mt-4 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-display)' }}>
               A Philosophy<br />of <span className="text-gradient-gold">Flavor</span>
             </h1>
@@ -95,7 +95,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 border-t border-white/5">
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">Our Principles</span>
+            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Our Principles</span>
             <h2 className="text-3xl md:text-4xl lg:text-[62px] font-medium leading-[1] mt-4" style={{ fontFamily: 'var(--font-display)' }}>
               What We Stand For
             </h2>
@@ -103,9 +103,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="p-6 rounded-xl border border-white/5 hover:border-[#C8A97E]/30 transition-all duration-300 text-center group">
-                  <div className="w-12 h-12 rounded-full bg-[#C8A97E]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#C8A97E]/20 transition-colors">
-                    <v.icon size={20} className="text-[#C8A97E]" />
+                <div className="p-6 rounded-xl border border-white/5 hover:border-[#33A1E0]/30 transition-all duration-300 text-center group">
+                  <div className="w-12 h-12 rounded-full bg-[#33A1E0]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#33A1E0]/20 transition-colors">
+                    <v.icon size={20} className="text-[#33A1E0]" />
                   </div>
                   <h3 className="text-base font-medium mb-2">{v.title}</h3>
                   <p className="text-xs text-white/40 leading-relaxed">{v.desc}</p>
@@ -120,7 +120,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 border-t border-white/5">
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#C8A97E] text-xs tracking-[0.3em] uppercase">The Team</span>
+            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">The Team</span>
             <h2 className="text-3xl md:text-4xl lg:text-[62px] font-medium leading-[1] mt-4" style={{ fontFamily: 'var(--font-display)' }}>
               Meet Our Artisans
             </h2>
@@ -129,11 +129,11 @@ export default function AboutPage() {
             {team.map((m, i) => (
               <AnimatedSection key={m.name} delay={i * 0.1}>
                 <div className="group text-center">
-                  <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto mb-5 border-2 border-[#C8A97E]/20 group-hover:border-[#C8A97E]/50 transition-all duration-500">
+                  <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto mb-5 border-2 border-[#33A1E0]/20 group-hover:border-[#33A1E0]/50 transition-all duration-500">
                     <Image src={m.avatar} alt={m.name} fill className="object-cover" sizes="160px" />
                   </div>
                   <h3 className="text-base font-medium">{m.name}</h3>
-                  <p className="text-[#C8A97E] text-xs tracking-wider uppercase mt-1 mb-3">{m.role}</p>
+                  <p className="text-[#33A1E0] text-xs tracking-wider uppercase mt-1 mb-3">{m.role}</p>
                   <p className="text-xs text-white/40 leading-relaxed max-w-xs mx-auto">{m.desc}</p>
                 </div>
               </AnimatedSection>
