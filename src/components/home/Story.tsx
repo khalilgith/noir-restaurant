@@ -3,79 +3,84 @@
 import Image from 'next/image';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
+const stats = [
+  { number: '15+', label: 'Years of Excellence' },
+  { number: '2', label: 'Michelin Stars' },
+  { number: '500+', label: 'Wine Labels' },
+  { number: '1', label: 'Unforgettable Experience' },
+];
+
 export default function Story() {
   return (
-    <section className="relative py-20 md:py-32 bg-[#0A0A0A] text-white overflow-hidden">
-      {/* Background texture */}
-      <div className="absolute inset-0 grain-overlay opacity-20" />
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-[#33A1E0]/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent" />
 
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image side */}
-          <AnimatedSection direction="left" className="relative">
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80"
-                alt="Chef preparing a dish"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            </div>
-            {/* Floating stat card */}
-            <div className="absolute -bottom-6 -right-4 md:right-8 glass rounded-xl p-5 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
-              <div className="text-3xl font-bold text-[#33A1E0]" style={{ fontFamily: 'var(--font-display)' }}>15+</div>
-              <div className="text-xs text-white/50 mt-1">Years of Excellence</div>
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          <AnimatedSection>
+            <div className="relative">
+              <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+                  alt="NOIR Restaurant interior"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-8 -right-8 w-48 md:w-64 h-48 md:h-64 bg-[#C8A97E]/5 border border-[#C8A97E]/10 p-6 md:p-8 hidden md:flex flex-col justify-center">
+                <p className="font-[family-name:var(--font-display)] text-4xl text-[#C8A97E]">2009</p>
+                <p className="text-[10px] tracking-[0.15em] uppercase text-white/30 mt-2">
+                  Founded in Paris
+                </p>
+              </div>
             </div>
           </AnimatedSection>
 
-          {/* Text side */}
-          <div className="space-y-8">
-            <AnimatedSection direction="right">
-              <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Our Story</span>
-              <h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                A Legacy of
-                <br />
-                <span className="text-gradient-gold">Culinary Art</span>
-              </h2>
-            </AnimatedSection>
+          <AnimatedSection delay={0.15}>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+              Our Story
+            </span>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-[62px] leading-[1.1] text-white">
+              Where Passion<br />
+              <span className="text-gradient">Meets Precision</span>
+            </h2>
+            <p className="mt-6 text-sm text-white/35 leading-relaxed font-light">
+              Founded in 2009 by Chef Laurent Moreau, NOIR was born from a singular vision:
+              to create a dining experience that transcends the ordinary. Nestled in the heart
+              of Paris, our restaurant is a sanctuary for those who appreciate the art of fine
+              gastronomy.
+            </p>
+            <p className="mt-4 text-sm text-white/35 leading-relaxed font-light">
+              Every ingredient is sourced with intention, every plate composed with precision,
+              and every detail — from the lighting to the service — calibrated to transport
+              our guests into a world of sensory elegance.
+            </p>
+            <div className="mt-8 w-12 h-[1px] bg-[#C8A97E]/40" />
+            <p className="mt-4 text-xs italic text-white/30">
+              &ldquo;Cooking is not about convenience — it&apos;s about respect for the ingredient.&rdquo;
+            </p>
+            <p className="text-[10px] tracking-[0.15em] uppercase text-white/20 mt-2">
+              — Chef Laurent Moreau
+            </p>
+          </AnimatedSection>
+        </div>
 
-            <AnimatedSection direction="right" delay={0.2}>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Founded in 2019 by Chef Laurent Moreau, NOIR emerged from a vision to create a dining experience that transcends the ordinary. Drawing inspiration from French culinary traditions and modern innovation, every dish is crafted with meticulous attention to detail and an unwavering commitment to excellence.
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.04] mt-24">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-[#0A0A0A] py-10 md:py-14 text-center"
+            >
+              <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-[#C8A97E]">
+                {stat.number}
               </p>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" delay={0.3}>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Our kitchen is a theater of precision, where the finest seasonal ingredients from local artisans and global purveyors are transformed into edible poetry. The name NOIR reflects our philosophy: finding beauty in depth, sophistication in simplicity, and light in darkness.
+              <p className="text-[10px] tracking-[0.15em] uppercase text-white/25 mt-2">
+                {stat.label}
               </p>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" delay={0.4}>
-              <div className="grid grid-cols-3 gap-6 pt-4">
-                {[
-                  { value: '2', label: 'Michelin Stars' },
-                  { value: '40+', label: 'Awards Won' },
-                  { value: '98%', label: 'Guest Satisfaction' },
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-[#33A1E0]" style={{ fontFamily: 'var(--font-display)' }}>
-                      {stat.value}
-                    </div>
-                    <div className="text-[10px] text-white/30 tracking-wider uppercase mt-1">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

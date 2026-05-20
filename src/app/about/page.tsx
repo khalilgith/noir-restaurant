@@ -2,145 +2,114 @@
 
 import Image from 'next/image';
 import AnimatedSection from '@/components/ui/AnimatedSection';
-import { Award, Heart, Users, Sparkles } from 'lucide-react';
+import { Award, Heart, Leaf, Sparkles } from 'lucide-react';
 
 const values = [
-  {
-    icon: Award,
-    title: 'Excellence',
-    desc: 'Uncompromising commitment to quality in every ingredient, technique, and presentation.',
-  },
-  {
-    icon: Heart,
-    title: 'Passion',
-    desc: 'A labor of love shared by every member of the NOIR team, from kitchen to front-of-house.',
-  },
-  {
-    icon: Users,
-    title: 'Community',
-    desc: 'Building relationships with local farmers, artisans, and the neighborhood we call home.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Innovation',
-    desc: 'Pushing culinary boundaries while honoring the timeless traditions of French gastronomy.',
-  },
+  { icon: Award, title: 'Excellence', desc: 'Every dish is held to the highest standard of culinary perfection.' },
+  { icon: Heart, title: 'Passion', desc: 'Driven by an unwavering love for the art of gastronomy.' },
+  { icon: Leaf, title: 'Sustainability', desc: 'Committed to responsible sourcing and zero-waste practices.' },
+  { icon: Sparkles, title: 'Innovation', desc: 'Pushing boundaries while honoring classical French technique.' },
 ];
 
 const team = [
   { name: 'Laurent Moreau', role: 'Executive Chef & Founder', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80', desc: 'A graduate of Le Cordon Bleu with 20 years of experience across Michelin-starred kitchens in Paris, London, and Tokyo.' },
   { name: 'Sophie Bernard', role: 'Head Sommelier', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80', desc: 'Award-winning sommelier with an encyclopedic knowledge of French and Italian wines. Curates our 500+ label wine cellar.' },
-  { name: 'Pierre Dubois', role: 'Pastry Chef', avatar: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=200&q=80', desc: 'Former pastry chef at Le Meurice. Known for delicate, architectural desserts that are as beautiful as they are delicious.' },
-  { name: 'Camille Fontaine', role: 'Restaurant Director', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80', desc: 'With over 15 years in luxury hospitality, ensures every guest experience at NOIR is flawless and memorable.' },
+  { name: 'Pierre Dubois', role: 'Pastry Chef', avatar: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=200&q=80', desc: 'Former pastry chef at Le Meurice. Known for delicate, architectural desserts.' },
+  { name: 'Camille Fontaine', role: 'Restaurant Director', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80', desc: 'With over 15 years in luxury hospitality, ensures every guest experience at NOIR is flawless.' },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="pt-24 md:pt-28 bg-[#0A0A0A] text-white min-h-screen">
-      {/* Hero */}
-      <section className="relative pb-12 md:pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
-        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
+    <main className="min-h-screen bg-[#0A0A0A]">
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">About NOIR</span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] mt-4 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-display)' }}>
-              A Philosophy<br />of <span className="text-gradient-gold">Flavor</span>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+              About NOIR
+            </span>
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[85px] leading-[0.9] text-white">
+              Our <span className="text-gradient">Story</span>
             </h1>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-12 md:py-20 border-t border-white/5">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <AnimatedSection direction="left">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
-                  alt="Interior of NOIR"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </AnimatedSection>
-            <div className="space-y-6">
-              <AnimatedSection direction="right">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
-                  From Vision to <span className="text-gradient-gold">Reality</span>
-                </h2>
-              </AnimatedSection>
-              <AnimatedSection delay={0.1} direction="right">
-                <p className="text-white/50 text-sm leading-relaxed">
-                  NOIR was born from a simple yet audacious vision: to create a dining experience that engages all the senses. Chef Laurent Moreau spent two years traveling the world, studying under master chefs, and sourcing the finest purveyors before opening the doors of NOIR in the heart of Paris.
-                </p>
-              </AnimatedSection>
-              <AnimatedSection delay={0.2} direction="right">
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Every element of NOIR — from the hand-blown glassware to the custom-made table linens, from the carefully curated playlist to the lighting designed to flatter every face — has been considered with the same meticulous care as the food on your plate.
-                </p>
-              </AnimatedSection>
-              <AnimatedSection delay={0.3} direction="right">
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Our name reflects our aesthetic: the beauty of darkness, the depth of shadow, and the way candlelight illuminates what matters most — the connection between people sharing a meal.
-                </p>
-              </AnimatedSection>
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+          <AnimatedSection>
+            <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+                alt="NOIR restaurant interior"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-16 md:py-24 border-t border-white/5">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Our Principles</span>
-            <h2 className="text-3xl md:text-4xl lg:text-[62px] font-medium leading-[1] mt-4" style={{ fontFamily: 'var(--font-display)' }}>
-              What We Stand For
-            </h2>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v, i) => (
-              <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="p-6 rounded-xl border border-white/5 hover:border-[#33A1E0]/30 transition-all duration-300 text-center group">
-                  <div className="w-12 h-12 rounded-full bg-[#33A1E0]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#33A1E0]/20 transition-colors">
-                    <v.icon size={20} className="text-[#33A1E0]" />
-                  </div>
-                  <h3 className="text-base font-medium mb-2">{v.title}</h3>
-                  <p className="text-xs text-white/40 leading-relaxed">{v.desc}</p>
+          <AnimatedSection delay={0.1}>
+            <p className="text-sm text-white/35 leading-relaxed font-light">
+              Founded in 2009, NOIR emerged from Chef Laurent Moreau&apos;s vision to redefine
+              fine dining in Paris. What began as an intimate 24-seat restaurant has grown into
+              one of the city&apos;s most celebrated culinary destinations.
+            </p>
+            <p className="mt-4 text-sm text-white/35 leading-relaxed font-light">
+              Our philosophy is simple: respect the ingredient, honor the technique, and
+              create moments that linger long after the last bite. Every element — from the
+              hand-selected linens to the curated wine list — is a reflection of our
+              commitment to excellence.
+            </p>
+            <p className="mt-4 text-sm text-white/35 leading-relaxed font-light">
+              Today, NOIR holds two Michelin stars and is recognized as one of the world&apos;s
+              finest dining experiences. But our true reward is the quiet smile of a guest
+              who has tasted something unforgettable.
+            </p>
+          </AnimatedSection>
+        </div>
+
+        <AnimatedSection className="mb-24">
+          <div className="text-center mb-12">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">Our Values</span>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white">
+              What We <span className="text-gradient">Stand For</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
+            {values.map((v) => (
+              <div key={v.title} className="bg-[#0A0A0A] p-8 text-center group hover:bg-white/[0.02] transition-colors duration-500">
+                <div className="w-12 h-12 mx-auto mb-4 border border-white/10 flex items-center justify-center group-hover:border-[#C8A97E]/30 transition-colors duration-500">
+                  <v.icon size={18} className="text-[#C8A97E]/60" />
                 </div>
-              </AnimatedSection>
+                <h3 className="text-sm font-medium text-white">{v.title}</h3>
+                <p className="text-xs text-white/30 mt-2 leading-relaxed">{v.desc}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </AnimatedSection>
 
-      {/* Team */}
-      <section className="py-16 md:py-24 border-t border-white/5">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">The Team</span>
-            <h2 className="text-3xl md:text-4xl lg:text-[62px] font-medium leading-[1] mt-4" style={{ fontFamily: 'var(--font-display)' }}>
-              Meet Our Artisans
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">Our Team</span>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white">
+              Meet the <span className="text-gradient">Artisans</span>
             </h2>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((m, i) => (
-              <AnimatedSection key={m.name} delay={i * 0.1}>
-                <div className="group text-center">
-                  <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto mb-5 border-2 border-[#33A1E0]/20 group-hover:border-[#33A1E0]/50 transition-all duration-500">
-                    <Image src={m.avatar} alt={m.name} fill className="object-cover" sizes="160px" />
-                  </div>
-                  <h3 className="text-base font-medium">{m.name}</h3>
-                  <p className="text-[#33A1E0] text-xs tracking-wider uppercase mt-1 mb-3">{m.role}</p>
-                  <p className="text-xs text-white/40 leading-relaxed max-w-xs mx-auto">{m.desc}</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
+            {team.map((m) => (
+              <div key={m.name} className="bg-[#0A0A0A] p-8 group hover:bg-white/[0.02] transition-colors duration-500">
+                <div className="relative w-24 h-24 mx-auto mb-5 overflow-hidden border border-white/[0.06]">
+                  <Image src={m.avatar} alt={m.name} fill className="object-cover" sizes="96px" />
                 </div>
-              </AnimatedSection>
+                <h3 className="text-sm font-medium text-white text-center">{m.name}</h3>
+                <p className="text-[10px] tracking-[0.15em] uppercase text-[#C8A97E]/60 text-center mt-1">{m.role}</p>
+                <p className="text-xs text-white/30 text-center mt-3 leading-relaxed">{m.desc}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </AnimatedSection>
+      </div>
     </main>
   );
 }

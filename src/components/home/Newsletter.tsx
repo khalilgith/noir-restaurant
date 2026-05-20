@@ -1,80 +1,59 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
-import { Input } from '@/components/ui/Input';
-import Button from '@/components/ui/Button';
-import { Mail, Check } from 'lucide-react';
 
 export default function Newsletter() {
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setEmail('');
-      }, 3000);
-    }
+    if (email) setSubscribed(true);
   };
 
   return (
-    <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#33A1E0]/5 rounded-full blur-[120px] pointer-events-none" />
-      </div>
+    <AnimatedSection className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-32">
+      <div className="relative border border-white/[0.06] p-10 md:p-16 lg:p-20 text-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-      <div className="relative max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-        <AnimatedSection className="max-w-xl mx-auto text-center">
-          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Stay Connected</span>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1] mt-4 mb-4"
-            style={{ fontFamily: 'var(--font-display)' }}
+        <span className="relative text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+          Stay Connected
+        </span>
+        <h2 className="relative mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl leading-[1.1] text-white">
+          Join Our <span className="text-gradient">Connoisseur</span> Circle
+        </h2>
+        <p className="relative mt-4 text-sm text-white/30 max-w-md mx-auto font-light">
+          Receive exclusive invitations, seasonal menu previews, and curated wine
+          pairing notes from Chef Laurent.
+        </p>
+
+        {subscribed ? (
+          <div className="relative mt-8 inline-flex items-center gap-2 text-sm text-[#C8A97E]">
+            <span>✓</span> You&apos;ve been added to our list.
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="relative mt-8 flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto"
           >
-            Join Our Circle
-          </h2>
-          <p className="text-[var(--foreground)]/40 text-sm mb-8 leading-relaxed">
-            Receive exclusive invitations to tasting events, seasonal menu previews, and members-only experiences.
-          </p>
-
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <div className="flex-1">
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                icon={<Mail size={16} />}
-                required
-              />
-            </div>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button
-                type="submit"
-                variant="gold"
-                size="md"
-                className="w-full sm:w-auto whitespace-nowrap"
-              >
-                {submitted ? (
-                  <span className="flex items-center gap-2">
-                    <Check size={14} /> Subscribed
-                  </span>
-                ) : (
-                  'Subscribe'
-                )}
-              </Button>
-            </motion.div>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email address"
+              required
+              className="flex-1 w-full bg-white/[0.03] border border-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C8A97E]/50 transition-colors"
+            />
+            <button
+              type="submit"
+              className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em] uppercase bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#E8D5B5] transition-all duration-500 whitespace-nowrap"
+            >
+              Subscribe
+            </button>
           </form>
-
-          <p className="text-[10px] text-[var(--foreground)]/20 mt-4">
-            By subscribing, you agree to our privacy policy. Unsubscribe anytime.
-          </p>
-        </AnimatedSection>
+        )}
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

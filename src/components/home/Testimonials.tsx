@@ -1,134 +1,82 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { testimonials } from '@/lib/data';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const start = () => {
-    intervalRef.current = setInterval(() => {
-      setCurrent((p) => (p + 1) % testimonials.length);
-    }, 6000);
-  };
 
   useEffect(() => {
-    start();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
-  const go = (dir: number) => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setCurrent((p) => (p + dir + testimonials.length) % testimonials.length);
-    start();
-  };
-
-  const t = testimonials[current];
-
   return (
-    <section className="relative py-20 md:py-32 bg-[#0A0A0A] text-white overflow-hidden">
-      <div className="absolute inset-0 grain-overlay opacity-15" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33A1E0]/5 rounded-full blur-[150px] pointer-events-none" />
+    <AnimatedSection className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-32">
+      <div className="text-center mb-16">
+        <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+          Guest Reflections
+        </span>
+        <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-[62px] leading-[1.1] text-white">
+          Voices of <span className="text-gradient">NOIR</span>
+        </h2>
+      </div>
 
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-        <AnimatedSection className="text-center mb-16">
-          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Testimonials</span>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4"
-            style={{ fontFamily: 'var(--font-display)' }}
+      <div className="relative max-w-3xl mx-auto">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center"
           >
-            Guest Voices
-          </h2>
-        </AnimatedSection>
-
-        <div className="relative max-w-3xl mx-auto">
-          {/* Quote icon */}
-          <Quote size={48} className="text-[#33A1E0]/10 absolute -top-4 left-0 md:-left-8" />
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center gap-1 mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className={i < t.rating ? 'text-[#33A1E0] fill-[#33A1E0]' : 'text-white/20'}
-                  />
-                ))}
-              </div>
-
-              <p
-                className="text-lg md:text-xl lg:text-2xl font-light leading-relaxed text-white/80 mb-8 italic"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                &ldquo;{t.content}&rdquo;
-              </p>
-
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#33A1E0]/30">
-                  <Image
-                    src={t.avatar}
-                    alt={t.name}
-                    width={48}
-                    height={48}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div>
-                  <div className="text-sm font-medium">{t.name}</div>
-                  <div className="text-xs text-white/40">{t.role}</div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-10">
-            <button
-              onClick={() => go(-1)}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={16} className="text-white/60" />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (intervalRef.current) clearInterval(intervalRef.current);
-                    setCurrent(i);
-                    start();
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === current ? 'bg-[#33A1E0] w-6' : 'bg-white/20 hover:bg-white/40'
-                  }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#C8A97E]/20">
+                <Image
+                  src={testimonials[current].avatar}
+                  alt={testimonials[current].name}
+                  width={64}
+                  height={64}
+                  className="object-cover w-full h-full"
                 />
-              ))}
+              </div>
             </div>
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light italic">
+              &ldquo;{testimonials[current].content}&rdquo;
+            </p>
+            <div className="mt-6">
+              <p className="text-sm font-medium text-white">
+                {testimonials[current].name}
+              </p>
+              <p className="text-[10px] tracking-[0.15em] uppercase text-white/30 mt-1">
+                {testimonials[current].role}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="flex justify-center gap-2 mt-10">
+          {testimonials.map((_, i) => (
             <button
-              onClick={() => go(1)}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
-              aria-label="Next"
-            >
-              <ChevronRight size={16} className="text-white/60" />
-            </button>
-          </div>
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`transition-all duration-500 ${
+                i === current
+                  ? 'w-8 h-[2px] bg-[#C8A97E]'
+                  : 'w-4 h-[2px] bg-white/10 hover:bg-white/20'
+              }`}
+              aria-label={`Testimonial ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

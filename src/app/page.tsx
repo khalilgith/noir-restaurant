@@ -7,17 +7,17 @@ import Testimonials from '@/components/home/Testimonials';
 import GalleryPreview from '@/components/home/GalleryPreview';
 import Newsletter from '@/components/home/Newsletter';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <FeaturedDishes />
       <Story />
       <MenuPreview />
-      <ReservationCTA />
       <Testimonials />
       <GalleryPreview />
+      <ReservationCTA />
       <Newsletter />
-    </>
+    </main>
   );
 }

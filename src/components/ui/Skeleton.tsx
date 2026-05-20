@@ -1,44 +1,11 @@
-'use client';
-
-import { cn } from '@/lib/utils';
-
-interface SkeletonProps {
-  className?: string;
-  variant?: 'text' | 'circular' | 'rectangular';
-  width?: string | number;
-  height?: string | number;
-}
-
-export default function Skeleton({
-  className,
-  variant = 'rectangular',
-  width,
-  height,
-}: SkeletonProps) {
-  return (
-    <div
-      className={cn(
-        'skeleton',
-        variant === 'circular' && 'rounded-full',
-        variant === 'text' && 'rounded h-4',
-        variant === 'rectangular' && 'rounded-lg',
-        className
-      )}
-      style={{ width, height }}
-    />
-  );
-}
-
 export function MenuCardSkeleton() {
   return (
-    <div className="rounded-lg border border-[#EFEFEF] p-5 space-y-4">
-      <Skeleton height={200} className="w-full" />
-      <Skeleton variant="text" width="60%" />
-      <Skeleton variant="text" width="100%" />
-      <Skeleton variant="text" width="80%" />
-      <div className="flex justify-between items-center pt-2">
-        <Skeleton variant="text" width={60} height={24} />
-        <Skeleton variant="rectangular" width={100} height={36} className="rounded-[15px]" />
+    <div className="bg-white/[0.03] border border-white/[0.06] overflow-hidden">
+      <div className="aspect-[4/3] skeleton" />
+      <div className="p-5 space-y-3">
+        <div className="h-4 w-3/4 skeleton" />
+        <div className="h-3 w-full skeleton" />
+        <div className="h-3 w-1/2 skeleton" />
       </div>
     </div>
   );
@@ -46,17 +13,16 @@ export function MenuCardSkeleton() {
 
 export function TestimonialSkeleton() {
   return (
-    <div className="rounded-lg border border-[#EFEFEF] p-6 space-y-4">
+    <div className="bg-white/[0.03] border border-white/[0.06] p-8 space-y-4">
       <div className="flex items-center gap-3">
-        <Skeleton variant="circular" width={48} height={48} />
+        <div className="w-10 h-10 rounded-full skeleton" />
         <div className="space-y-2">
-          <Skeleton variant="text" width={120} />
-          <Skeleton variant="text" width={80} />
+          <div className="h-3 w-20 skeleton" />
+          <div className="h-2 w-14 skeleton" />
         </div>
       </div>
-      <Skeleton variant="text" width="100%" />
-      <Skeleton variant="text" width="90%" />
-      <Skeleton variant="text" width="70%" />
+      <div className="h-3 w-full skeleton" />
+      <div className="h-3 w-5/6 skeleton" />
     </div>
   );
 }

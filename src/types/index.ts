@@ -13,7 +13,7 @@ export interface MenuItem {
   allergens?: string[];
 }
 
-export type MenuCategory = 
+export type MenuCategory =
   | 'starters'
   | 'mains'
   | 'seafood'
@@ -43,7 +43,7 @@ export interface Testimonial {
   role: string;
   content: string;
   rating: number;
-  date: string;
+  date?: string;
 }
 
 export interface GalleryImage {
@@ -57,9 +57,7 @@ export interface GalleryImage {
 
 export interface OpeningHours {
   day: string;
-  open: string;
-  close: string;
-  closed?: boolean;
+  hours: string;
 }
 
 export interface AIChatMessage {

@@ -1,139 +1,99 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { MapPin, Phone, Mail, ArrowUp } from 'lucide-react';
-import AnimatedSection from '@/components/ui/AnimatedSection';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { openingHours } from '@/lib/data';
 
 export default function Footer() {
-  const pathname = usePathname();
-  if (pathname.startsWith('/admin')) return null;
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="relative bg-[#0A0A0A] text-white border-t border-white/5">
-      {/* Decorative top line */}
-      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#33A1E0] to-transparent" />
+    <footer className="border-t border-white/[0.04] mt-24">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/">
+              <span className="font-[family-name:var(--font-display)] text-xl tracking-[0.3em] text-white">
+                NOIR
+              </span>
+            </Link>
+            <p className="mt-4 text-xs text-white/30 leading-relaxed max-w-xs font-light">
+              An immersive culinary journey through the finest ingredients,
+              masterful technique, and timeless elegance.
+            </p>
+            <div className="mt-6 flex flex-col gap-2">
+              <a href="tel:+33142681234" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#C8A97E] transition-colors">
+                <Phone size={12} /> +33 1 42 68 12 34
+              </a>
+              <a href="mailto:reservations@noir-paris.com" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#C8A97E] transition-colors">
+                <Mail size={12} /> reservations@noir-paris.com
+              </a>
+              <span className="flex items-center gap-2 text-xs text-white/30">
+                <MapPin size={12} /> 42 Rue de la Paix, 75002 Paris
+              </span>
+            </div>
+          </div>
 
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16 py-16 md:py-20">
-        <AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-            {/* Brand */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center text-white text-sm font-bold tracking-wider">
-                  N
+          <div>
+            <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-4">
+              Navigation
+            </h4>
+            <div className="flex flex-col gap-2.5">
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/menu', label: 'Menu' },
+                { href: '/reservation', label: 'Reservations' },
+                { href: '/about', label: 'Our Story' },
+                { href: '/gallery', label: 'Gallery' },
+                { href: '/contact', label: 'Contact' },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs text-white/30 hover:text-[#C8A97E] transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-4">
+              Hours
+            </h4>
+            <div className="flex flex-col gap-2.5">
+              {openingHours.map((h) => (
+                <div key={h.day} className="flex justify-between gap-4 text-xs">
+                  <span className="text-white/30">{h.day}</span>
+                  <span className="text-white/20">{h.hours}</span>
                 </div>
-                <span className="text-xl tracking-[0.2em] uppercase font-light">Noir</span>
-              </div>
-              <p className="text-sm text-white/50 leading-relaxed max-w-xs">
-                A culinary sanctuary where artistry meets flavor. Experience dining elevated to its most exquisite form.
-              </p>
-              <div className="flex items-center gap-4">
-                <a
-                  href="#"
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#33A1E0] transition-all duration-300"
-                  aria-label="Instagram"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </a>
-                <a
-                  href="#"
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#33A1E0] transition-all duration-300"
-                  aria-label="Facebook"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <div className="space-y-6">
-              <h4 className="text-xs tracking-[0.2em] uppercase text-[#33A1E0]">Navigate</h4>
-              <ul className="space-y-3">
-                {[
-                  { href: '/', label: 'Home' },
-                  { href: '/menu', label: 'Menu' },
-                  { href: '/reservation', label: 'Reservations' },
-                  { href: '/about', label: 'Our Story' },
-                  { href: '/gallery', label: 'Gallery' },
-                  { href: '/contact', label: 'Contact' },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/40 hover:text-white transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Hours */}
-            <div className="space-y-6">
-              <h4 className="text-xs tracking-[0.2em] uppercase text-[#33A1E0]">Hours</h4>
-              <ul className="space-y-2">
-                {openingHours.map((h) => (
-                  <li key={h.day} className="flex justify-between text-sm">
-                    <span className="text-white/40">{h.day}</span>
-                    <span className={h.closed ? 'text-white/20 italic' : 'text-white/60'}>
-                      {h.closed ? 'Closed' : `${h.open} – ${h.close}`}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div className="space-y-6">
-              <h4 className="text-xs tracking-[0.2em] uppercase text-[#33A1E0]">Contact</h4>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-sm">
-                  <MapPin size={16} className="text-[#33A1E0] mt-0.5 shrink-0" />
-                  <span className="text-white/50">
-                    42 Rue de la Gastronomie<br />
-                    Paris, 75008, France
-                  </span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <Phone size={16} className="text-[#33A1E0] shrink-0" />
-                  <a href="tel:+33142681234" className="text-white/50 hover:text-white transition-colors">
-                    +33 1 42 68 12 34
-                  </a>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <Mail size={16} className="text-[#33A1E0] shrink-0" />
-                  <a href="mailto:reservations@noir.com" className="text-white/50 hover:text-white transition-colors">
-                    reservations@noir.com
-                  </a>
-                </li>
-              </ul>
+              ))}
             </div>
           </div>
-        </AnimatedSection>
 
-        {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/30">
-            &copy; {new Date().getFullYear()} NOIR Restaurant. All rights reserved.
+          <div>
+            <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-4">
+              Experiences
+            </h4>
+            <div className="flex flex-col gap-2.5">
+              <span className="text-xs text-white/30">Chef&apos;s Table</span>
+              <span className="text-xs text-white/30">Wine Pairing</span>
+              <span className="text-xs text-white/30">Private Dining</span>
+              <span className="text-xs text-white/30">Seasonal Tasting</span>
+              <span className="text-xs text-white/30">Cooking Classes</span>
+              <span className="text-xs text-white/30">Corporate Events</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[10px] text-white/20 tracking-[0.1em]">
+            &copy; {new Date().getFullYear()} NOIR Paris. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-white/30">
-            <a href="#" className="hover:text-white/60 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/60 transition-colors">Terms of Service</a>
+          <div className="flex items-center gap-6">
+            <span className="text-[10px] text-white/20 tracking-[0.1em]">Privacy Policy</span>
+            <span className="text-[10px] text-white/20 tracking-[0.1em]">Terms of Service</span>
+            <span className="text-[10px] text-white/20 tracking-[0.1em]">Accessibility</span>
           </div>
-          <button
-            onClick={scrollToTop}
-            className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#33A1E0] transition-all duration-300"
-            aria-label="Back to top"
-          >
-            <ArrowUp size={14} className="text-white/60" />
-          </button>
         </div>
       </div>
     </footer>

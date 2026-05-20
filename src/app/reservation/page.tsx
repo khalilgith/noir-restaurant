@@ -17,330 +17,299 @@ function getDaysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
 }
 
-function CalendarWidget({ selected, onChange }: { selected: Date | null; onChange: (d: Date) => void }) {
-  const [viewDate, setViewDate] = useState(new Date());
-  const year = viewDate.getFullYear();
-  const month = viewDate.getMonth();
-  const daysInMonth = getDaysInMonth(year, month);
+function getMonthDays(year: number, month: number) {
+  const days: (number | null)[] = [];
   const firstDay = new Date(year, month, 1).getDay();
-
-  const prev = () => setViewDate(new Date(year, month - 1, 1));
-  const next = () => setViewDate(new Date(year, month + 1, 1));
-
-  const isPast = (day: number) => {
-    const d = new Date(year, month, day);
-    d.setHours(23, 59, 59, 999);
-    return d < today;
-  };
-
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
-        <button onClick={prev} className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors">
-          <ChevronLeft size={16} className="text-white/60" />
-        </button>
-        <span className="text-sm text-white font-medium">
-          {viewDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-        </span>
-        <button onClick={next} className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors">
-          <ChevronRight size={16} className="text-white/60" />
-        </button>
-      </div>
-
-      <div className="grid grid-cols-7 gap-1 mb-2">
-        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
-          <div key={d} className="text-[10px] text-white/30 text-center py-1 uppercase tracking-wider">{d}</div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-7 gap-1">
-        {Array.from({ length: firstDay }).map((_, i) => (
-          <div key={`empty-${i}`} />
-        ))}
-        {Array.from({ length: daysInMonth }).map((_, i) => {
-          const day = i + 1;
-          const past = isPast(day);
-          const isSelected =
-            selected &&
-            selected.getDate() === day &&
-            selected.getMonth() === month &&
-            selected.getFullYear() === year;
-          return (
-            <button
-              key={day}
-              disabled={past}
-              onClick={() => onChange(new Date(year, month, day))}
-              className={`w-full aspect-square rounded-full text-xs flex items-center justify-center transition-all duration-200 ${
-                isSelected
-                  ? 'bg-gradient-to-br from-[#33A1E0] to-[#154D71] text-white'
-                  : past
-                  ? 'text-white/10 cursor-not-allowed'
-                  : 'text-white/60 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              {day}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  date: Date | null;
-  time: string;
-  guests: number;
-  occasion: string;
-  specialRequests: string;
+  const total = getDaysInMonth(year, month);
+  for (let i = 0; i < firstDay; i++) days.push(null);
+  for (let d = 1; d <= total; d++) days.push(d);
+  return days;
 }
 
 export default function ReservationPage() {
   const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState<FormData>({
-    name: '',
-    email: '',
-    phone: '',
-    date: null,
-    time: '',
-    guests: 2,
-    occasion: '',
-    specialRequests: '',
-  });
+  const [calendarDate, setCalendarDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState('');
+  const [guests, setGuests] = useState(2);
+  const [occasion, setOccasion] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [notes, setNotes] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
+  const [bookingId, setBookingId] = useState('');
 
-  const update = (key: keyof FormData, value: any) => setForm((p) => ({ ...p, [key]: value }));
+  const year = calendarDate.getFullYear();
+  const month = calendarDate.getMonth();
+  const monthDays = getMonthDays(year, month);
+  const monthName = calendarDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const isDateDisabled = (d: number) => {
+    const date = new Date(year, month, d);
+    const day = date.getDay();
+    if (day === 1) return true;
+    date.setHours(0, 0, 0, 0);
+    return date < new Date(today.getFullYear(), today.getMonth(), today.getDate()) || date > maxDate;
   };
 
-  if (submitted) {
+  const handleConfirm = () => {
+    setBookingId(generateId().toUpperCase());
+    setConfirmed(true);
+  };
+
+  if (confirmed) {
     return (
-      <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center max-w-md px-5"
-        >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#33A1E0] to-[#154D71] flex items-center justify-center mx-auto mb-6">
-            <Check size={28} className="text-white" />
-          </div>
-          <h2 className="text-3xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-            Reservation Confirmed
-          </h2>
-          <p className="text-[var(--foreground)]/40 text-sm mb-6 leading-relaxed">
-            Thank you, {form.name}! We&apos;re excited to welcome you on{' '}
-            {form.date?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} at{' '}
-            {form.time} for {form.guests} {form.guests === 1 ? 'guest' : 'guests'}.
-          </p>
-          <p className="text-[var(--foreground)]/30 text-xs">
-            A confirmation has been sent to {form.email}. Please arrive 15 minutes before your reservation time.
-          </p>
-        </motion.div>
+      <main className="min-h-screen bg-[#0A0A0A] pt-32">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
+          <AnimatedSection>
+            <div className="max-w-lg mx-auto text-center py-20">
+              <div className="w-16 h-16 mx-auto mb-6 bg-[#C8A97E] flex items-center justify-center">
+                <Check size={28} className="text-[#0A0A0A]" />
+              </div>
+              <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
+                Reservation Confirmed
+              </h1>
+              <p className="mt-4 text-sm text-white/40">
+                Your table at NOIR has been reserved. A confirmation has been sent to your email.
+              </p>
+              <div className="mt-8 inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] px-6 py-3">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-white/30">Booking ID:</span>
+                <span className="text-sm text-[#C8A97E] font-mono tracking-wider">{bookingId}</span>
+              </div>
+              {selectedDate && (
+                <p className="mt-4 text-xs text-white/30">
+                  {selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                  {' at '}{selectedTime} · {guests} guest{guests > 1 ? 's' : ''}
+                </p>
+              )}
+            </div>
+          </AnimatedSection>
+        </div>
       </main>
     );
   }
 
-  const progress = (step / 3) * 100;
-
   return (
-    <main className="pt-24 md:pt-28 bg-[var(--background)] min-h-screen">
-      {/* Header */}
-      <section className="relative pb-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#33A1E0]/5 to-transparent pointer-events-none" />
-        <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
+    <main className="min-h-screen bg-[#0A0A0A]">
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[85px] font-medium leading-[0.9] text-gradient-gold" style={{ fontFamily: 'var(--font-display)' }}>
-              Reserve
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+              Reservations
+            </span>
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[85px] leading-[0.9] text-white">
+              Book Your <span className="text-gradient">Table</span>
             </h1>
-            <p className="text-[var(--foreground)]/40 text-sm max-w-md mt-4">
-              Book your table at NOIR. We look forward to hosting you for an unforgettable evening.
+            <p className="mt-4 text-sm text-white/30 max-w-md font-light">
+              Reserve your experience at NOIR. We look forward to hosting you.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Progress bar */}
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16 mb-8">
-        <div className="w-full h-[2px] bg-[var(--glass-light)] rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-[#33A1E0] to-[#154D71]"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.4 }}
-          />
-        </div>
-        <div className="flex justify-between mt-2 text-[10px] text-[var(--foreground)]/30 uppercase tracking-wider">
-          <span className={step >= 1 ? 'text-[#33A1E0]' : ''}>Date & Time</span>
-          <span className={step >= 2 ? 'text-[#33A1E0]' : ''}>Details</span>
-          <span className={step >= 3 ? 'text-[#33A1E0]' : ''}>Confirm</span>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-5 md:px-10 lg:px-16 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Calendar & Time */}
-          <div>
-            <AnimatedSection key={`step-${step}`} direction="left">
-              {step === 1 && (
-                <div className="space-y-8">
-                  <CalendarWidget selected={form.date} onChange={(d) => update('date', d)} />
-                  {form.date && (
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                      <h4 className="text-xs font-medium text-white/60 mb-3 flex items-center gap-2">
-                        <Clock size={14} /> Available Times
-                      </h4>
-                      <div className="grid grid-cols-4 gap-2">
-                        {availableTimes.map((t) => (
-                          <button
-                            key={t}
-                            onClick={() => update('time', t)}
-                            className={`py-2 text-xs rounded-lg border transition-all ${
-                              form.time === t
-                                ? 'border-[#33A1E0] bg-[#33A1E0]/10 text-[#33A1E0]'
-                                : 'border-white/10 text-white/50 hover:border-white/20'
-                            }`}
-                          >
-                            {t}
-                          </button>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                  {!form.date && (
-                    <p className="text-xs text-white/30 text-center">Please select a date to see available times.</p>
-                  )}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 pb-24">
+        <div className="max-w-2xl mx-auto">
+          <div className="flex items-center gap-3 mb-12">
+            {[1, 2, 3].map((s) => (
+              <div key={s} className="flex items-center gap-3 flex-1">
+                <div className={`w-8 h-8 flex items-center justify-center text-xs ${
+                  step >= s ? 'bg-[#C8A97E] text-[#0A0A0A]' : 'bg-white/[0.03] text-white/30 border border-white/10'
+                }`}>
+                  {step > s ? <Check size={14} /> : s}
                 </div>
-              )}
+                {s < 3 && (
+                  <div className={`flex-1 h-[1px] ${step > s ? 'bg-[#C8A97E]/50' : 'bg-white/[0.06]'}`} />
+                )}
+              </div>
+            ))}
+          </div>
 
-              {step === 2 && (
-                <div className="space-y-6" style={{ maxWidth: 400 }}>
-                  <Input
-                    label="Full Name"
-                    value={form.name}
-                    onChange={(e) => update('name', e.target.value)}
-                    placeholder="Your name"
-                    required
-                  />
-                  <Input
-                    label="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => update('email', e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                  />
-                  <Input
-                    label="Phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) => update('phone', e.target.value)}
-                    placeholder="+1 234 567 890"
-                    required
-                  />
-                  <div>
-                    <label className="text-xs font-medium text-white/70 mb-1.5 block">Number of Guests</label>
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => update('guests', Math.max(1, form.guests - 1))}
-                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:border-white/30 transition-colors"
-                      >
-                        –
-                      </button>
-                      <span className="text-lg font-medium text-white w-8 text-center">{form.guests}</span>
-                      <button
-                        onClick={() => update('guests', Math.min(20, form.guests + 1))}
-                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:border-white/30 transition-colors"
-                      >
-                        +
-                      </button>
-                    </div>
+          <AnimatePresence mode="wait">
+            {step === 1 && (
+              <motion.div key="step1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-lg font-medium text-white">Select Date & Time</h2>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setCalendarDate(new Date(year, month - 1))}
+                      className="w-8 h-8 flex items-center justify-center text-white/30 hover:text-white transition-colors"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <span className="text-xs text-white/60 w-32 text-center">{monthName}</span>
+                    <button
+                      onClick={() => setCalendarDate(new Date(year, month + 1))}
+                      className="w-8 h-8 flex items-center justify-center text-white/30 hover:text-white transition-colors"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
                   </div>
+                </div>
+
+                <div className="grid grid-cols-7 gap-1 mb-2">
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
+                    <div key={d} className="text-center text-[10px] tracking-[0.1em] uppercase text-white/20 py-2">
+                      {d}
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-7 gap-1 mb-8">
+                  {monthDays.map((d, i) => {
+                    if (d === null) return <div key={`e-${i}`} />;
+                    const disabled = isDateDisabled(d);
+                    const dateObj = new Date(year, month, d);
+                    const isSelected = selectedDate && dateObj.toDateString() === selectedDate.toDateString();
+                    return (
+                      <button
+                        key={d}
+                        disabled={disabled}
+                        onClick={() => setSelectedDate(dateObj)}
+                        className={`h-10 text-xs transition-all duration-300 ${
+                          isSelected
+                            ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                            : disabled
+                              ? 'text-white/10 cursor-not-allowed'
+                              : 'text-white/40 hover:bg-white/[0.04] hover:text-white/60'
+                        }`}
+                      >
+                        {d}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {selectedDate && (
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+                    <h3 className="text-xs tracking-[0.15em] uppercase text-white/40 mb-4 flex items-center gap-2">
+                      <Clock size={12} /> Available Times
+                    </h3>
+                    <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 mb-8">
+                      {availableTimes.map((t) => (
+                        <button
+                          key={t}
+                          onClick={() => setSelectedTime(t)}
+                          className={`py-2.5 text-xs transition-all duration-300 ${
+                            selectedTime === t
+                              ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                              : 'bg-white/[0.03] text-white/40 border border-white/10 hover:border-white/20'
+                          }`}
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                <div className="flex justify-end">
+                  <Button
+                    onClick={() => setStep(2)}
+                    disabled={!selectedDate || !selectedTime}
+                  >
+                    Continue
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {step === 2 && (
+              <motion.div key="step2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+                <h2 className="text-lg font-medium text-white mb-6 flex items-center gap-2">
+                  <Users size={16} className="text-[#C8A97E]" /> Guests & Occasion
+                </h2>
+
+                <div className="mb-8">
+                  <label className="text-[11px] tracking-[0.15em] uppercase text-white/40 mb-3 block">
+                    Number of Guests
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setGuests(Math.max(1, guests - 1))}
+                      className="w-10 h-10 bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/60 hover:border-white/20 transition-colors"
+                    >
+                      −
+                    </button>
+                    <span className="w-12 text-center text-lg text-white font-medium">{guests}</span>
+                    <button
+                      onClick={() => setGuests(Math.min(12, guests + 1))}
+                      className="w-10 h-10 bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/60 hover:border-white/20 transition-colors"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mb-8">
                   <Select
-                    label="Occasion (Optional)"
-                    value={form.occasion}
-                    onChange={(e) => update('occasion', e.target.value)}
-                    options={[
-                      { value: '', label: 'Select occasion...' },
-                      ...occasions.map((o) => ({ value: o, label: o })),
-                    ]}
+                    label="Occasion (optional)"
+                    value={occasion}
+                    onChange={(e) => setOccasion(e.target.value)}
+                    options={occasions}
                   />
                 </div>
-              )}
 
-              {step === 3 && (
-                <div className="space-y-6" style={{ maxWidth: 400 }}>
-                  <h4 className="text-sm font-medium text-white">Review Your Reservation</h4>
-                  <div className="space-y-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Date</span>
-                      <span className="text-white">{form.date?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Time</span>
-                      <span className="text-white">{form.time}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Guests</span>
-                      <span className="text-white">{form.guests}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Name</span>
-                      <span className="text-white">{form.name}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Email</span>
-                      <span className="text-white">{form.email}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-white/40">Phone</span>
-                      <span className="text-white">{form.phone}</span>
-                    </div>
-                    {form.occasion && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-white/40">Occasion</span>
-                        <span className="text-white">{form.occasion}</span>
-                      </div>
-                    )}
-                  </div>
+                <div className="flex justify-between">
+                  <Button variant="ghost" onClick={() => setStep(1)}>
+                    Back
+                  </Button>
+                  <Button onClick={() => setStep(3)}>
+                    Continue
+                  </Button>
                 </div>
-              )}
-            </AnimatedSection>
-          </div>
+              </motion.div>
+            )}
 
-          {/* Buttons */}
-          <div className="flex flex-col justify-end">
-            <div className="space-y-4">
-              {step > 1 && (
-                <Button variant="ghost" onClick={() => setStep(step - 1)} size="md" className="!justify-start">
-                  &larr; Back
-                </Button>
-              )}
-              {step < 3 ? (
-                <Button
-                  variant="gold"
-                  size="lg"
-                  fullWidth
-                  onClick={() => setStep(step + 1)}
-                  disabled={
-                    (step === 1 && (!form.date || !form.time)) ||
-                    (step === 2 && (!form.name || !form.email))
-                  }
-                >
-                  Continue
-                </Button>
-              ) : (
-                <Button variant="gold" size="lg" fullWidth onClick={handleSubmit}>
-                  Confirm Reservation
-                </Button>
-              )}
-            </div>
-          </div>
+            {step === 3 && (
+              <motion.div key="step3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+                <h2 className="text-lg font-medium text-white mb-6">Your Details</h2>
+
+                <div className="space-y-4 mb-8">
+                  <Input label="Full Name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
+                  <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" />
+                  <Input label="Phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+33 6 12 34 56 78" />
+                  <Textarea label="Special Requests (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Allergies, preferences, celebration notes..." />
+                </div>
+
+                {selectedDate && selectedTime && (
+                  <div className="bg-white/[0.02] border border-white/[0.04] p-4 mb-8">
+                    <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-3">Summary</h4>
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <span className="text-white/30">Date</span>
+                        <p className="text-white mt-0.5">{selectedDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
+                      </div>
+                      <div>
+                        <span className="text-white/30">Time</span>
+                        <p className="text-white mt-0.5">{selectedTime}</p>
+                      </div>
+                      <div>
+                        <span className="text-white/30">Guests</span>
+                        <p className="text-white mt-0.5">{guests}</p>
+                      </div>
+                      <div>
+                        <span className="text-white/30">Occasion</span>
+                        <p className="text-white mt-0.5">{occasion || 'None specified'}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex justify-between">
+                  <Button variant="ghost" onClick={() => setStep(2)}>
+                    Back
+                  </Button>
+                  <Button
+                    onClick={handleConfirm}
+                    disabled={!name || !email}
+                  >
+                    Confirm Reservation
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </main>

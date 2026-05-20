@@ -1,111 +1,112 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { menuItems, categoryLabels } from '@/lib/data';
 import { formatPrice } from '@/lib/utils';
 import { MenuCategory } from '@/types';
 
-const categories: MenuCategory[] = ['starters', 'mains', 'seafood', 'desserts', 'drinks'];
+const categories: (MenuCategory | 'all')[] = ['all', 'starters', 'mains', 'seafood', 'desserts'];
 
 export default function MenuPreview() {
-  const [active, setActive] = useState<MenuCategory>('starters');
-  const filtered = menuItems.filter((i) => i.category === active);
+  const [active, setActive] = useState<MenuCategory | 'all'>('all');
+
+  const filtered = active === 'all'
+    ? menuItems.slice(0, 6)
+    : menuItems.filter((i) => i.category === active).slice(0, 6);
 
   return (
-    <section className="relative py-20 md:py-32 bg-[var(--background)] overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#33A1E0]/4 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-16">
-        <AnimatedSection className="text-center mb-12">
-          <span className="text-[#33A1E0] text-xs tracking-[0.3em] uppercase">Explore</span>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-medium leading-[1] mt-4 mb-6"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Our Menu
+    <AnimatedSection className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-32">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+            Curated Selection
+          </span>
+          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-[62px] leading-[1.1] text-white">
+            Explore the <span className="text-gradient">Menu</span>
           </h2>
-        </AnimatedSection>
-
-        {/* Category tabs */}
-        <AnimatedSection delay={0.2} className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`relative px-5 py-2 text-xs tracking-wider uppercase rounded-full transition-all duration-300 ${
-                active === cat
-                  ? 'text-white'
-                  : 'text-[var(--foreground)]/50 hover:text-[var(--foreground)]/80 border border-[var(--glass-light)]'
-              }`}
-            >
-              {active === cat && (
-                <motion.div
-                  layoutId="menu-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-[#33A1E0] to-[#154D71] rounded-full"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{categoryLabels[cat]}</span>
-            </button>
-          ))}
-        </AnimatedSection>
-
-        {/* Menu items grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filtered.map((dish, i) => (
-              <motion.div
-                key={dish.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group flex gap-4 p-4 rounded-xl border border-[var(--glass-light)] hover:border-[#33A1E0]/30 transition-all duration-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
-              >
-                <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
-                  <Image
-                    src={dish.image}
-                    alt={dish.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="80px"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-sm font-medium truncate">{dish.name}</h4>
-                    <span className="text-sm font-semibold text-[#33A1E0] shrink-0">
-                      {formatPrice(dish.price)}
-                    </span>
-                  </div>
-                  <p className="text-xs text-[var(--foreground)]/40 mt-1 line-clamp-2 leading-relaxed">
-                    {dish.description}
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    {dish.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#33A1E0]/10 text-[#33A1E0]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+        </div>
+        <Link
+          href="/menu"
+          className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-[#C8A97E] transition-colors duration-300 shrink-0"
+        >
+          View Full Menu →
+        </Link>
       </div>
-    </section>
+
+      <div className="flex gap-2 overflow-x-auto no-scrollbar pb-4 mb-8">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActive(cat)}
+            className={`relative px-6 py-2.5 text-[10px] tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-300 ${
+              active === cat
+                ? 'text-[#0A0A0A]'
+                : 'text-white/40 border border-white/10 hover:border-white/20'
+            }`}
+          >
+            {active === cat && (
+              <motion.div
+                layoutId="menu-tab"
+                className="absolute inset-0 bg-[#C8A97E]"
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">
+              {cat === 'all' ? 'All' : categoryLabels[cat]}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04]"
+        >
+          {filtered.map((dish, i) => (
+            <motion.div
+              key={dish.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.04 }}
+              className="group relative bg-[#0A0A0A] overflow-hidden"
+            >
+              <div className="relative h-48 md:h-56 overflow-hidden">
+                <Image
+                  src={dish.image}
+                  alt={dish.name}
+                  fill
+                  className="object-cover transition-all duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+                {dish.featured && (
+                  <span className="absolute top-3 left-3 text-[8px] tracking-[0.2em] uppercase bg-[#C8A97E] text-[#0A0A0A] px-3 py-1">
+                    Signature
+                  </span>
+                )}
+              </div>
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-2 mb-1.5">
+                  <h3 className="text-sm font-medium text-white">{dish.name}</h3>
+                  <span className="text-sm text-[#C8A97E] shrink-0">{formatPrice(dish.price)}</span>
+                </div>
+                <p className="text-xs text-white/30 line-clamp-2 leading-relaxed">
+                  {dish.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </AnimatedSection>
   );
 }
