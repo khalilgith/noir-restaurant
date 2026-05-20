@@ -20,12 +20,12 @@ const team = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main className="min-h-screen bg-[#0C0A08]">
       <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/[0.02] to-transparent" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
               About NOIR
             </span>
             <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[85px] leading-[0.9] text-white">
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0A08] via-transparent to-transparent" />
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
@@ -71,16 +71,16 @@ export default function AboutPage() {
 
         <AnimatedSection className="mb-24">
           <div className="text-center mb-12">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">Our Values</span>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">Our Values</span>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white">
               What We <span className="text-gradient">Stand For</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
             {values.map((v) => (
-              <div key={v.title} className="bg-[#0A0A0A] p-8 text-center group hover:bg-white/[0.02] transition-colors duration-500">
-                <div className="w-12 h-12 mx-auto mb-4 border border-white/10 flex items-center justify-center group-hover:border-[#C8A97E]/30 transition-colors duration-500">
-                  <v.icon size={18} className="text-[#C8A97E]/60" />
+              <div key={v.title} className="bg-[#0C0A08] p-8 text-center group hover:bg-white/[0.02] transition-colors duration-500">
+                <div className="w-12 h-12 mx-auto mb-4 border border-white/10 flex items-center justify-center group-hover:border-[#D4A574]/30 transition-colors duration-500">
+                  <v.icon size={18} className="text-[#D4A574]/60" />
                 </div>
                 <h3 className="text-sm font-medium text-white">{v.title}</h3>
                 <p className="text-xs text-white/30 mt-2 leading-relaxed">{v.desc}</p>
@@ -91,19 +91,19 @@ export default function AboutPage() {
 
         <AnimatedSection>
           <div className="text-center mb-12">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">Our Team</span>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">Our Team</span>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white">
               Meet the <span className="text-gradient">Artisans</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04]">
             {team.map((m) => (
-              <div key={m.name} className="bg-[#0A0A0A] p-8 group hover:bg-white/[0.02] transition-colors duration-500">
+              <div key={m.name} className="bg-[#0C0A08] p-8 group hover:bg-white/[0.02] transition-colors duration-500">
                 <div className="relative w-24 h-24 mx-auto mb-5 overflow-hidden border border-white/[0.06]">
                   <Image src={m.avatar} alt={m.name} fill className="object-cover" sizes="96px" />
                 </div>
                 <h3 className="text-sm font-medium text-white text-center">{m.name}</h3>
-                <p className="text-[10px] tracking-[0.15em] uppercase text-[#C8A97E]/60 text-center mt-1">{m.role}</p>
+                <p className="text-[10px] tracking-[0.15em] uppercase text-[#D4A574]/60 text-center mt-1">{m.role}</p>
                 <p className="text-xs text-white/30 text-center mt-3 leading-relaxed">{m.desc}</p>
               </div>
             ))}

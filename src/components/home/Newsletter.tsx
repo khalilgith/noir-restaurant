@@ -17,7 +17,7 @@ export default function Newsletter() {
       <div className="relative border border-white/[0.06] p-10 md:p-16 lg:p-20 text-center">
         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-        <span className="relative text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+        <span className="relative text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
           Stay Connected
         </span>
         <h2 className="relative mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl leading-[1.1] text-white">
@@ -29,7 +29,7 @@ export default function Newsletter() {
         </p>
 
         {subscribed ? (
-          <div className="relative mt-8 inline-flex items-center gap-2 text-sm text-[#C8A97E]">
+          <div className="relative mt-8 inline-flex items-center gap-2 text-sm text-[#D4A574]">
             <span>✓</span> You&apos;ve been added to our list.
           </div>
         ) : (
@@ -43,11 +43,11 @@ export default function Newsletter() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
               required
-              className="flex-1 w-full bg-white/[0.03] border border-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C8A97E]/50 transition-colors"
+              className="flex-1 w-full bg-white/[0.03] border border-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#D4A574]/50 transition-colors"
             />
             <button
               type="submit"
-              className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em] uppercase bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#E8D5B5] transition-all duration-500 whitespace-nowrap"
+              className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em] uppercase bg-[#D4A574] text-[#0C0A08] hover:bg-[#E8CCA8] transition-all duration-500 whitespace-nowrap"
             >
               Subscribe
             </button>

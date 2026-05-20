@@ -22,12 +22,12 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main className="min-h-screen bg-[#0C0A08]">
       <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/[0.02] to-transparent" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
               Get in Touch
             </span>
             <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[85px] leading-[0.9] text-white">
@@ -50,14 +50,14 @@ export default function ContactPage() {
                   return (
                     <div key={info.label} className="flex items-start gap-4">
                       <div className="w-10 h-10 border border-white/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon size={16} className="text-[#C8A97E]/60" />
+                        <Icon size={16} className="text-[#D4A574]/60" />
                       </div>
                       <div>
                         <p className="text-[10px] tracking-[0.15em] uppercase text-white/40">{info.label}</p>
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-sm text-white/70 hover:text-[#C8A97E] transition-colors mt-0.5 block"
+                            className="text-sm text-white/70 hover:text-[#D4A574] transition-colors mt-0.5 block"
                           >
                             {info.value}
                           </a>
@@ -104,10 +104,10 @@ export default function ContactPage() {
 
               {submitted ? (
                 <div className="text-center py-12">
-                  <div className="w-12 h-12 mx-auto mb-4 bg-[#C8A97E] flex items-center justify-center">
-                    <Send size={20} className="text-[#0A0A0A]" />
+                  <div className="w-12 h-12 mx-auto mb-4 bg-[#D4A574] flex items-center justify-center">
+                    <Send size={20} className="text-[#0C0A08]" />
                   </div>
-                  <p className="text-sm text-[#C8A97E]">Message sent successfully.</p>
+                  <p className="text-sm text-[#D4A574]">Message sent successfully.</p>
                   <p className="text-xs text-white/30 mt-2">We&apos;ll respond within 24 hours.</p>
                 </div>
               ) : (

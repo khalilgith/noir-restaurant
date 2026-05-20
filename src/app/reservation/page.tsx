@@ -60,12 +60,12 @@ export default function ReservationPage() {
 
   if (confirmed) {
     return (
-      <main className="min-h-screen bg-[#0A0A0A] pt-32">
+      <main className="min-h-screen bg-[#0C0A08] pt-32">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
             <div className="max-w-lg mx-auto text-center py-20">
-              <div className="w-16 h-16 mx-auto mb-6 bg-[#C8A97E] flex items-center justify-center">
-                <Check size={28} className="text-[#0A0A0A]" />
+              <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A574] flex items-center justify-center">
+                <Check size={28} className="text-[#0C0A08]" />
               </div>
               <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
                 Reservation Confirmed
@@ -75,7 +75,7 @@ export default function ReservationPage() {
               </p>
               <div className="mt-8 inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] px-6 py-3">
                 <span className="text-[10px] tracking-[0.2em] uppercase text-white/30">Booking ID:</span>
-                <span className="text-sm text-[#C8A97E] font-mono tracking-wider">{bookingId}</span>
+                <span className="text-sm text-[#D4A574] font-mono tracking-wider">{bookingId}</span>
               </div>
               {selectedDate && (
                 <p className="mt-4 text-xs text-white/30">
@@ -91,12 +91,12 @@ export default function ReservationPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main className="min-h-screen bg-[#0C0A08]">
       <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/[0.02] to-transparent" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
               Reservations
             </span>
             <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[85px] leading-[0.9] text-white">
@@ -115,12 +115,12 @@ export default function ReservationPage() {
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-3 flex-1">
                 <div className={`w-8 h-8 flex items-center justify-center text-xs ${
-                  step >= s ? 'bg-[#C8A97E] text-[#0A0A0A]' : 'bg-white/[0.03] text-white/30 border border-white/10'
+                  step >= s ? 'bg-[#D4A574] text-[#0C0A08]' : 'bg-white/[0.03] text-white/30 border border-white/10'
                 }`}>
                   {step > s ? <Check size={14} /> : s}
                 </div>
                 {s < 3 && (
-                  <div className={`flex-1 h-[1px] ${step > s ? 'bg-[#C8A97E]/50' : 'bg-white/[0.06]'}`} />
+                  <div className={`flex-1 h-[1px] ${step > s ? 'bg-[#D4A574]/50' : 'bg-white/[0.06]'}`} />
                 )}
               </div>
             ))}
@@ -168,7 +168,7 @@ export default function ReservationPage() {
                         onClick={() => setSelectedDate(dateObj)}
                         className={`h-10 text-xs transition-all duration-300 ${
                           isSelected
-                            ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                            ? 'bg-[#D4A574] text-[#0C0A08]'
                             : disabled
                               ? 'text-white/10 cursor-not-allowed'
                               : 'text-white/40 hover:bg-white/[0.04] hover:text-white/60'
@@ -192,7 +192,7 @@ export default function ReservationPage() {
                           onClick={() => setSelectedTime(t)}
                           className={`py-2.5 text-xs transition-all duration-300 ${
                             selectedTime === t
-                              ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                              ? 'bg-[#D4A574] text-[#0C0A08]'
                               : 'bg-white/[0.03] text-white/40 border border-white/10 hover:border-white/20'
                           }`}
                         >
@@ -217,7 +217,7 @@ export default function ReservationPage() {
             {step === 2 && (
               <motion.div key="step2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
                 <h2 className="text-lg font-medium text-white mb-6 flex items-center gap-2">
-                  <Users size={16} className="text-[#C8A97E]" /> Guests & Occasion
+                  <Users size={16} className="text-[#D4A574]" /> Guests & Occasion
                 </h2>
 
                 <div className="mb-8">

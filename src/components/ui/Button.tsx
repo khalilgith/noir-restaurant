@@ -26,13 +26,13 @@ export default function Button({
 
   const variants: Record<string, string> = {
     primary:
-      'bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#E8D5B5] active:bg-[#A68B5B]',
+      'bg-[#D4A574] text-[#0C0A08] hover:bg-[#E8CCA8] active:bg-[#B8895E]',
     secondary:
       'bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20',
     ghost:
       'bg-transparent text-white/60 hover:text-white',
     outline:
-      'bg-transparent border border-[#C8A97E] text-[#C8A97E] hover:bg-[#C8A97E] hover:text-[#0A0A0A]',
+      'bg-transparent border border-[#D4A574] text-[#D4A574] hover:bg-[#D4A574] hover:text-[#0C0A08]',
   };
 
   const sizes: Record<string, string> = {

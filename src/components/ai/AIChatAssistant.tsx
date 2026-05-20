@@ -103,7 +103,7 @@ export default function AIChatAssistant() {
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#C8A97E] text-[#0A0A0A] flex items-center justify-center transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#D4A574] text-[#0C0A08] flex items-center justify-center transition-all duration-300 ${
           isOpen ? 'opacity-0 pointer-events-none scale-90' : 'opacity-100'
         }`}
         aria-label="Open AI Chef Assistant"
@@ -118,12 +118,12 @@ export default function AIChatAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[560px] max-h-[calc(100vh-100px)] bg-[#0A0A0A] border border-white/[0.06] flex flex-col overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[560px] max-h-[calc(100vh-100px)] bg-[#0C0A08] border border-white/[0.06] flex flex-col overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.04]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[#C8A97E] flex items-center justify-center">
-                  <Sparkles size={14} className="text-[#0A0A0A]" />
+                <div className="w-8 h-8 bg-[#D4A574] flex items-center justify-center">
+                  <Sparkles size={14} className="text-[#0C0A08]" />
                 </div>
                 <div>
                   <h4 className="text-white text-sm font-medium">Ask the Chef</h4>
@@ -150,7 +150,7 @@ export default function AIChatAssistant() {
                   <div
                     className={`max-w-[85%] px-4 py-3 text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                        ? 'bg-[#D4A574] text-[#0C0A08]'
                         : 'bg-white/[0.04] text-white/70 border border-white/[0.04]'
                     }`}
                   >
@@ -167,7 +167,7 @@ export default function AIChatAssistant() {
                           key={i}
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ repeat: Infinity, duration: 1, delay: i * 0.2 }}
-                          className="w-1.5 h-1.5 rounded-full bg-[#C8A97E]/50"
+                          className="w-1.5 h-1.5 rounded-full bg-[#D4A574]/50"
                         />
                       ))}
                     </div>
@@ -183,7 +183,7 @@ export default function AIChatAssistant() {
                   <button
                     key={s}
                     onClick={() => sendMessage(s)}
-                    className="text-[10px] text-[#C8A97E]/70 border border-[#C8A97E]/20 px-3 py-1.5 hover:bg-[#C8A97E]/10 transition-colors"
+                    className="text-[10px] text-[#D4A574]/70 border border-[#D4A574]/20 px-3 py-1.5 hover:bg-[#D4A574]/10 transition-colors"
                   >
                     {s}
                   </button>
@@ -197,12 +197,12 @@ export default function AIChatAssistant() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask anything about dining..."
-                  className="flex-1 bg-white/[0.03] border border-white/10 px-4 py-2.5 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-[#C8A97E]/50"
+                  className="flex-1 bg-white/[0.03] border border-white/10 px-4 py-2.5 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-[#D4A574]/50"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="w-9 h-9 bg-[#C8A97E] flex items-center justify-center text-[#0A0A0A] disabled:opacity-30 transition-opacity shrink-0"
+                  className="w-9 h-9 bg-[#D4A574] flex items-center justify-center text-[#0C0A08] disabled:opacity-30 transition-opacity shrink-0"
                 >
                   <Send size={14} />
                 </button>

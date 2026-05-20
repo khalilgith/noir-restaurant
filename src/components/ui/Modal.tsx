@@ -25,7 +25,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="relative bg-[#0A0A0A] border border-white/[0.06] max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
+            className="relative bg-[#0C0A08] border border-white/[0.06] max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
           >
             <div className="flex items-center justify-between p-5 border-b border-white/[0.04]">
               {title && <h3 className="text-sm font-medium text-white">{title}</h3>}

@@ -12,7 +12,7 @@ export default function GalleryPreview() {
     <AnimatedSection className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-32">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
             Visual Journey
           </span>
           <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-[62px] leading-[1.1] text-white">
@@ -21,7 +21,7 @@ export default function GalleryPreview() {
         </div>
         <Link
           href="/gallery"
-          className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-[#C8A97E] transition-colors duration-300 shrink-0"
+          className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-[#D4A574] transition-colors duration-300 shrink-0"
         >
           View Gallery →
         </Link>
@@ -31,7 +31,7 @@ export default function GalleryPreview() {
         {preview.map((img) => (
           <div
             key={img.id}
-            className="group relative overflow-hidden bg-[#0A0A0A] aspect-[4/5]"
+            className="group relative overflow-hidden bg-[#0C0A08] aspect-[4/5]"
           >
             <Image
               src={img.src}
@@ -40,7 +40,7 @@ export default function GalleryPreview() {
               className="object-cover transition-all duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 50vw, 25vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#0C0A08]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
               <span className="text-[10px] tracking-[0.2em] uppercase text-white/60 border border-white/20 px-4 py-2">
                 {img.alt}
               </span>

@@ -29,7 +29,7 @@ export default function Hero() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0A0A0A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0C0A08]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
         <div className="grain-overlay absolute inset-0" />
       </div>
@@ -41,7 +41,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6"
         >
-          <span className="inline-block text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#C8A97E]/70 border border-[#C8A97E]/20 px-5 py-2">
+          <span className="inline-block text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#D4A574]/70 border border-[#D4A574]/20 px-5 py-2">
             Michelin-Star Dining · Paris
           </span>
         </motion.div>
@@ -75,7 +75,7 @@ export default function Hero() {
         >
           <Link
             href="/reservation"
-            className="px-10 py-4 text-xs tracking-[0.2em] uppercase bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#E8D5B5] transition-all duration-500 font-medium"
+            className="px-10 py-4 text-xs tracking-[0.2em] uppercase bg-[#D4A574] text-[#0C0A08] hover:bg-[#E8CCA8] transition-all duration-500 font-medium"
           >
             Reserve a Table
           </Link>
@@ -93,7 +93,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.2 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
-          <div className="w-[1px] h-16 bg-gradient-to-b from-[#C8A97E]/50 to-transparent mx-auto" />
+          <div className="w-[1px] h-16 bg-gradient-to-b from-[#D4A574]/50 to-transparent mx-auto" />
           <p className="text-[8px] tracking-[0.3em] uppercase text-white/20 mt-3">
             Scroll
           </p>

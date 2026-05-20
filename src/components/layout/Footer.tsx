@@ -20,10 +20,10 @@ export default function Footer() {
               masterful technique, and timeless elegance.
             </p>
             <div className="mt-6 flex flex-col gap-2">
-              <a href="tel:+33142681234" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#C8A97E] transition-colors">
+              <a href="tel:+33142681234" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#D4A574] transition-colors">
                 <Phone size={12} /> +33 1 42 68 12 34
               </a>
-              <a href="mailto:reservations@noir-paris.com" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#C8A97E] transition-colors">
+              <a href="mailto:reservations@noir-paris.com" className="flex items-center gap-2 text-xs text-white/30 hover:text-[#D4A574] transition-colors">
                 <Mail size={12} /> reservations@noir-paris.com
               </a>
               <span className="flex items-center gap-2 text-xs text-white/30">
@@ -48,7 +48,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs text-white/30 hover:text-[#C8A97E] transition-colors duration-300"
+                  className="text-xs text-white/30 hover:text-[#D4A574] transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

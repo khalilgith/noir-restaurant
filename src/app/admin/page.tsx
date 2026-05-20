@@ -42,12 +42,12 @@ export default function AdminPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main className="min-h-screen bg-[#0C0A08]">
       <section className="relative pt-32 pb-12 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C8A97E]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/[0.02] to-transparent" />
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
           <AnimatedSection>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
               Admin
             </span>
             <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl lg:text-[62px] leading-[1.1] text-white">
@@ -65,7 +65,7 @@ export default function AdminPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-2.5 text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'bg-[#C8A97E] text-[#0A0A0A]'
+                  ? 'bg-[#D4A574] text-[#0C0A08]'
                   : 'text-white/40 border border-white/10 hover:border-white/20'
               }`}
             >
@@ -80,13 +80,13 @@ export default function AdminPage() {
               {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={stat.label} className="bg-[#0A0A0A] p-6">
+                  <div key={stat.label} className="bg-[#0C0A08] p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <Icon size={14} className="text-[#C8A97E]/60" />
+                      <Icon size={14} className="text-[#D4A574]/60" />
                       <span className="text-[10px] tracking-[0.15em] uppercase text-white/30">{stat.label}</span>
                     </div>
                     <p className="text-2xl text-white font-medium">{stat.value}</p>
-                    <p className="text-[10px] text-[#4CD963] mt-1">{stat.change}</p>
+                    <p className="text-[10px] text-[#5A8F5A] mt-1">{stat.change}</p>
                   </div>
                 );
               })}
@@ -113,8 +113,8 @@ export default function AdminPage() {
                       <td className="p-4 text-white/50">{r.guests}</td>
                       <td className="p-4">
                         <span className={`text-[10px] tracking-[0.1em] uppercase px-2 py-1 ${
-                          r.status === 'confirmed' ? 'text-[#4CD963] border border-[#4CD963]/20' :
-                          r.status === 'pending' ? 'text-[#FFBB00] border border-[#FFBB00]/20' :
+                          r.status === 'confirmed' ? 'text-[#5A8F5A] border border-[#5A8F5A]/20' :
+                          r.status === 'pending' ? 'text-[#C49E45] border border-[#C49E45]/20' :
                           'text-red-400/60 border border-red-400/20'
                         }`}>
                           {r.status}
@@ -136,7 +136,7 @@ export default function AdminPage() {
                 value={menuSearch}
                 onChange={(e) => setMenuSearch(e.target.value)}
                 placeholder="Search menu..."
-                className="w-full bg-white/[0.03] border border-white/10 pl-10 pr-4 py-2 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-[#C8A97E]/50 transition-colors"
+                className="w-full bg-white/[0.03] border border-white/10 pl-10 pr-4 py-2 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-[#D4A574]/50 transition-colors"
               />
             </div>
 
@@ -161,15 +161,15 @@ export default function AdminPage() {
                           </div>
                           <div>
                             <span className="text-white">{dish.name}</span>
-                            {dish.featured && <span className="ml-2 text-[8px] tracking-[0.15em] uppercase text-[#C8A97E]/60">Signature</span>}
+                            {dish.featured && <span className="ml-2 text-[8px] tracking-[0.15em] uppercase text-[#D4A574]/60">Signature</span>}
                           </div>
                         </div>
                       </td>
                       <td className="p-4 text-white/50 capitalize">{dish.category}</td>
-                      <td className="p-4 text-[#C8A97E]">{formatPrice(dish.price)}</td>
+                      <td className="p-4 text-[#D4A574]">{formatPrice(dish.price)}</td>
                       <td className="p-4">
                         <div className="flex items-center gap-1">
-                          <Star size={10} className="text-[#C8A97E] fill-[#C8A97E]" />
+                          <Star size={10} className="text-[#D4A574] fill-[#D4A574]" />
                           <span className="text-white">{dish.rating}</span>
                         </div>
                       </td>

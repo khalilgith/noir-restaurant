@@ -19,7 +19,7 @@ export default function Testimonials() {
   return (
     <AnimatedSection className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 py-24 md:py-32">
       <div className="text-center mb-16">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A97E]/60">
+        <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4A574]/60">
           Guest Reflections
         </span>
         <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-[62px] leading-[1.1] text-white">
@@ -38,7 +38,7 @@ export default function Testimonials() {
             className="text-center"
           >
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#C8A97E]/20">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#D4A574]/20">
                 <Image
                   src={testimonials[current].avatar}
                   alt={testimonials[current].name}
@@ -69,7 +69,7 @@ export default function Testimonials() {
               onClick={() => setCurrent(i)}
               className={`transition-all duration-500 ${
                 i === current
-                  ? 'w-8 h-[2px] bg-[#C8A97E]'
+                  ? 'w-8 h-[2px] bg-[#D4A574]'
                   : 'w-4 h-[2px] bg-white/10 hover:bg-white/20'
               }`}
               aria-label={`Testimonial ${i + 1}`}

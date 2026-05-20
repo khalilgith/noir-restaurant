@@ -28,7 +28,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? 'bg-[#0A0A0A]/90 backdrop-blur-2xl border-b border-white/5 shadow-[0_1px_0_rgba(255,255,255,0.05)]'
+          ? 'bg-[#0C0A08]/90 backdrop-blur-2xl border-b border-white/5 shadow-[0_1px_0_rgba(255,255,255,0.05)]'
           : 'bg-transparent'
       }`}
     >
@@ -47,12 +47,12 @@ export default function Navbar() {
               className="relative text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-colors duration-300 py-2 group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C8A97E] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#D4A574] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
           <Link
             href="/reservation"
-            className="ml-4 px-6 py-2.5 text-xs tracking-[0.15em] uppercase bg-white/5 border border-white/10 text-white/80 hover:bg-[#C8A97E] hover:text-[#0A0A0A] hover:border-[#C8A97E] transition-all duration-500 rounded-none"
+            className="ml-4 px-6 py-2.5 text-xs tracking-[0.15em] uppercase bg-white/5 border border-white/10 text-white/80 hover:bg-[#D4A574] hover:text-[#0C0A08] hover:border-[#D4A574] transition-all duration-500 rounded-none"
           >
             Reserve
           </Link>
@@ -74,7 +74,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-[72px] left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-2xl border-b border-white/5"
+            className="md:hidden absolute top-[72px] left-0 right-0 bg-[#0C0A08]/95 backdrop-blur-2xl border-b border-white/5"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {links.map((link, i) => (
@@ -96,7 +96,7 @@ export default function Navbar() {
               <Link
                 href="/reservation"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 px-6 py-3 text-sm tracking-[0.15em] uppercase bg-[#C8A97E] text-[#0A0A0A] text-center transition-all"
+                className="mt-4 px-6 py-3 text-sm tracking-[0.15em] uppercase bg-[#D4A574] text-[#0C0A08] text-center transition-all"
               >
                 Reserve a Table
               </Link>
